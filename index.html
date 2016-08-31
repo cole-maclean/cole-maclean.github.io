@@ -2,88 +2,139 @@
 layout: default
 ---
 <div class="home">
+  <article class="home-feature-image" >
+	<style> /* set the CSS */
 
-<div class="site-header-container {% if site.cover %}has-cover{% endif %}" {% if site.cover %}style="background-image: url({{ site.cover | prepend: site.baseurl }});"{% endif %}>
-  <div class="scrim {% if site.cover %}has-cover{% endif %}">
-    <header class="site-header">
-      <h1 class="title">{{ site.title }}</h1>
-      {% if site.subtitle %}<p class="subtitle">{{ site.subtitle }}</p>{% endif %}
-    </header>
-  </div>
-</div>
+	body { font: 12px Arial;}
 
-<div class="wrapper">
-<ul class="post-list">
-  {% for post in paginator.posts %}
-  <li>
-    <h2>
-      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
-      <div class="post-categories">
-      {% if post.categories.size > 0 %}in {% for cat in post.categories %}
-        {% if site.jekyll-archives %}
-        <a href="{{ site.baseurl }}/category/{{ cat }}">{{ cat | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
-        {% else %}
-        <span>{{ cat | capitalize }}</span>{% if forloop.last == false %}, {% endif %}
-        {% endif %}
-      {% endfor %}{% endif %}
-      </div>
-    </section>
-  </li>
-  {% if forloop.last == false %}
-  <hr>
-  {% endif %}
-  {% endfor %}
-</ul>
+	.cat-label {
+	  text-align: center;
+	  align:middle;
+	}
 
-<nav class="pagination" role="navigation">
-  <p>
-    {% if paginator.next_page %}
-    <a class="newer-posts" href="{{ site.baseurl }}/page{{paginator.next_page}}">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x"></i>
-        <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-    {% else %}
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-square fa-stack-2x"></i>
-      <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-    </span>
-    {% endif %}
-    <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-    {% if paginator.previous_page %}
-      {% if paginator.page == 2 %}
-      <a class="newer-posts" href="{% if site.baseurl %}{{ site.baseurl }}{% endif %}/">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-square fa-stack-2x"></i>
-          <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
-      {% else %}
-      <a class="newer-posts" href="{{ site.baseurl }}/page{{paginator.previous_page}}">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-square fa-stack-2x"></i>
-          <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
-      {% endif %}
-    {% else %}
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-square fa-stack-2x"></i>
-      <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-    </span>
-    {% endif %}
-  </p>
-  <p>
-    <a href="{{ site.baseurl }}/posts">View All Posts by Category</a>
-  </p>
-</nav>
+	.viz-title {
+	  text-align: left;
+	  align:middle;
+	  color: #666;
+	  font: 16px Arial;
+	}
 
-</div>
+	.course-title {
+	  align:middle;
+	  font: 10px Arial;
+	}
+
+	path { 
+	    stroke-width: 2;
+	    fill: none;
+	}
+
+	.axis path,
+	.axis line {
+	    fill: none;
+	    stroke: grey;
+	    stroke-width: 1;
+	    shape-rendering: crispEdges;
+	}
+
+	.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    vertical-align: top;
+    overflow: hidden;
+	}
+
+	.svg-content-responsive {
+	    display: inline-block;
+	    position: absolute;
+	    top: 10px;
+	    left: 0;
+	}
+
+	.navigator .data {
+	    fill: lightgrey;
+	    stroke-width: 0px;
+	}
+
+	.navigator .viewport {
+	    stroke: grey;
+	    fill: black;
+	    fill-opacity: 0.2;
+	}
+	.navigator .line {
+	    fill: none;
+	    stroke: darkgrey;
+	    stroke-width: 1px;
+
+	}
+	</style>
+	<!-- load the d3.js library -->    
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="colorbrewer.js"></script>
+	<script src="tag_viz.js"></script>
+	<script src="working.js"></script>
+	<script src="learning.js"></script>
+	<script src="reading.js"></script>
+	
+
+  </article>
+
+	<div class="posts">
+	{% for post in paginator.posts %}
+		{% include post_tags_category.html %}
+		<div class="post-teaser">
+		  <header>
+		    <h1>
+		      <a id="post-link-trans" class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+		        {{ post.title }}
+		      </a>
+		    </h1>
+		    <p id="subtitletrans" class="subtitlecontainer">
+		      <a class="subtitle">{{ post.date | date: "%Y-%m-%d" }}</a>
+		      {% if post.category and post.tags %} | <a class="subtitle">{{ category_content }}</a> <a class="subtitle">{{ tags_content }}</a>{% endif %}
+		    </p>
+		  </header>
+		  <div class="excerpt">
+		  {% assign num = post.content | number_of_words %}
+		  {% if  num  < site.theme.visiblewords %}
+		    {{ post.content }}
+		  {% else %}
+		    {{ post.content | truncatewords: site.theme.visiblewords }}
+		    <p>
+		    <a class="text" href="{{ post.url | prepend: site.baseurl }}">
+		      {{ site.theme.str_continue_reading }}
+		    </a>
+		    </p>
+		  {% endif %}
+		  </div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div class="wp-pagenavi">
+
+	    {% if paginator.previous_page %}
+	    	<a class="previouspostslink" rel="prev" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" > « </a>
+	    {% endif %}
+
+	      {% if paginator.page == 1 %}
+	        <span class="current">1</span>
+	      {% else %}
+	        <a class="page larger" href="/">1</a>
+	      {% endif %}
+	   
+	    {% for count in (2..paginator.total_pages) %}
+	        {% if count == paginator.page %}
+	          <span class="current">{{ count }}</span>
+	        {% else %}
+	          <a class="page larger" href="{{ site.baseurl }}/blog/page{{ count }}">{{ count }}</a>
+	        {% endif %}
+	    {% endfor %}
+
+	    {% if paginator.next_page %}
+	    	<a class="nextpostslink" rel="next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" > » </a>
+	    {% endif %}
+
+	</div>
 </div>

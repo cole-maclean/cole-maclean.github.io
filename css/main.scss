@@ -1,13 +1,19 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+layout: null
 ---
-@charset "utf-8";
+// External
+@import 'external/reset';
+@import 'external/syntax';
 
-// Import partials from `sass_dir` (defaults to `_sass`)
-// Includes Bourbon, Neat, and Bitters (thanks, thoughtbot!)
-@import
-  "bourbon/bourbon",
-  "base/base",
-  "neat/neat",
-  "layout"
-;
+// Base
+@import 'base/variables';
+@import 'base/global';
+@import 'base/utility';
+
+// Posts
+@import 'layouts/posts';
+@import 'layouts/index';
+
+// Partials
+@import 'includes/header';
+@import 'includes/footer';
