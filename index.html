@@ -1,1 +1,140 @@
-test
+---
+layout: default
+---
+<div class="home">
+  <article class="home-feature-image" >
+	<style> /* set the CSS */
+
+	body { font: 12px Arial;}
+
+	.cat-label {
+	  text-align: center;
+	  align:middle;
+	}
+
+	.viz-title {
+	  text-align: left;
+	  align:middle;
+	  color: #666;
+	  font: 16px Arial;
+	}
+
+	.course-title {
+	  align:middle;
+	  font: 10px Arial;
+	}
+
+	path { 
+	    stroke-width: 2;
+	    fill: none;
+	}
+
+	.axis path,
+	.axis line {
+	    fill: none;
+	    stroke: grey;
+	    stroke-width: 1;
+	    shape-rendering: crispEdges;
+	}
+
+	.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    vertical-align: top;
+    overflow: hidden;
+	}
+
+	.svg-content-responsive {
+	    display: inline-block;
+	    position: absolute;
+	    top: 10px;
+	    left: 0;
+	}
+
+	.navigator .data {
+	    fill: lightgrey;
+	    stroke-width: 0px;
+	}
+
+	.navigator .viewport {
+	    stroke: grey;
+	    fill: black;
+	    fill-opacity: 0.2;
+	}
+	.navigator .line {
+	    fill: none;
+	    stroke: darkgrey;
+	    stroke-width: 1px;
+
+	}
+	</style>
+	<!-- load the d3.js library -->    
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="colorbrewer.js"></script>
+	<script src="tag_viz.js"></script>
+	<script src="working.js"></script>
+	<script src="learning.js"></script>
+	<script src="reading.js"></script>
+	
+
+  </article>
+
+	<div class="posts">
+	{% for post in paginator.posts %}
+		{% include post_tags_category.html %}
+		<div class="post-teaser">
+		  <header>
+		    <h1>
+		      <a id="post-link-trans" class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+		        {{ post.title }}
+		      </a>
+		    </h1>
+		    <p id="subtitletrans" class="subtitlecontainer">
+		      <a class="subtitle">{{ post.date | date: "%Y-%m-%d" }}</a>
+		      {% if post.category and post.tags %} | <a class="subtitle">{{ category_content }}</a> <a class="subtitle">{{ tags_content }}</a>{% endif %}
+		    </p>
+		  </header>
+		  <div class="excerpt">
+		  {% assign num = post.content | number_of_words %}
+		  {% if  num  < site.theme.visiblewords %}
+		    {{ post.content }}
+		  {% else %}
+		    {{ post.content | truncatewords: site.theme.visiblewords }}
+		    <p>
+		    <a class="text" href="{{ post.url | prepend: site.baseurl }}">
+		      {{ site.theme.str_continue_reading }}
+		    </a>
+		    </p>
+		  {% endif %}
+		  </div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div class="wp-pagenavi">
+
+	    {% if paginator.previous_page %}
+	    	<a class="previouspostslink" rel="prev" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" > « </a>
+	    {% endif %}
+
+	      {% if paginator.page == 1 %}
+	        <span class="current">1</span>
+	      {% else %}
+	        <a class="page larger" href="/">1</a>
+	      {% endif %}
+	   
+	    {% for count in (2..paginator.total_pages) %}
+	        {% if count == paginator.page %}
+	          <span class="current">{{ count }}</span>
+	        {% else %}
+	          <a class="page larger" href="{{ site.baseurl }}/blog/page{{ count }}">{{ count }}</a>
+	        {% endif %}
+	    {% endfor %}
+
+	    {% if paginator.next_page %}
+	    	<a class="nextpostslink" rel="next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" > » </a>
+	    {% endif %}
+
+	</div>
+</div>

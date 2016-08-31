@@ -76,11 +76,14 @@ sechby:
   tag:   #with
 
 # BUILD SETTINGS
-markdown: kramdown
+markdown:    kramdown
+
+kramdown:
+  input:         GFM
+  syntax_highlighter: rouge
+
 highlighter: rouge
+
 sass:
   sass_dir: _sass
   style: :compressed
-
-gems:
-  - jekyll-paginate
