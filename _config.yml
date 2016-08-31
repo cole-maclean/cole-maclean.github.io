@@ -1,0 +1,87 @@
+# SITE CONFIGURATION
+baseurl: "" # Set it to "" if use for personal site. The subpath of your site, e.g. /blog/
+url: "http://cole-maclean.github.io/" # the base hostname & protocol for your site
+imageurl: ""
+
+# THEME-SPECIFIC CONFIGURATION
+theme:
+  # Meta
+  title: Online Profile
+  #avatar: avatar.png
+  hometitle: Home #display on navigation menu.
+  yoursitetitle: Online Profile - Cole MacLean
+  gravatar: # Email MD5 hash
+  description: "Data visualizations capturing what I'm working on, what I'm learning and what I'm reading." # used by search engines
+  visiblewords: 300
+  # Header and footer text
+  header_text:
+
+  header_text_feature_image: img/blog_img.jpg
+  place_holder_image: img/blog_img.jpg
+  footer_text: >
+   <a href="http://cole-maclean.github.io/">Cole MacLean</a>
+  # Icons
+  rss: false
+  email_address: "maclean.cole@gmail.com" # Full email address, e.g. "sam@example.com"
+  behance:
+  bitbucket:
+  dribbble:
+  facebook:
+  flickr:
+  github: "cole-maclean"
+  weibo: 
+  google_plus:
+  instagram:
+  linkedin:  "https://www.linkedin.com/in/macleancole"
+  pinterest: 
+  reddit:
+  soundcloud:
+  stack_exchange:  # Full URL
+  steam:
+  tumblr:
+  twitter: "ponderingHplus"
+  wordpress:
+  youtube:
+  kaggle: "colemaclean"
+
+  # Scripts
+  google_analytics: "UA-71787228-1"
+  disqus_shortname:
+  katex: true # Enable if using math markup
+
+  # Localization strings
+  str_follow_on: "Follow on"
+  str_rss_follow: "Follow RSS feed"
+  str_email: "Email"
+  #str_next: "Next"
+  #str_prev: "Prev"
+  str_continue_reading: "Continue Reading..."
+
+  # Colours, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+
+  # Post navigation
+  post_navigation: false
+
+# PAGINATION
+enforce_ssl: "http://cole-maclean.github.io/"
+paginate: 5
+paginate_path: "blog/page:num"
+permalink: blog/:title/ 
+
+# Posted in ... with ...
+sechby: 
+  category:   #in
+  tag:   #with
+
+# BUILD SETTINGS
+pygments: true
+markdown: kramdown
+highlighter: null
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+gems:
+  - jekyll-paginate

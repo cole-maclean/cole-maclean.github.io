@@ -1,79 +1,36 @@
-# Fengzhichu Theme
+## Fengzhichu Theme
 
 A jekyll theme for personal blog which based on [Type theme](https://github.com/rohanchandra/type-theme) and [ibireme's blog](http://blog.ibireme.com). Add several useful features. Fengzhichu Theme is powered by [Jekyll](http://jekyllrb.com/) and freely
-hosted in [Github pages](https://pages.github.com/).
+hosted in [Github pages](https://pages.github.com/). Theme from [Fengzhichu](https://github.com/fengzhichu/fengzhichu-theme).
 
-## Check the live demo
 
-[Fengzhichu Theme Live Demo](https://fengzhichu.com)
+## API Configuration
+Authentication credentials for github and pocket access are stored in a file "secrets.ini". This file needs to be created in the root directory of this repo. Example configuration to include in this file is outlined below. The process for obtaining a Pocket consumer and access token can be found [here](https://github.com/gzb1985/pocketpy)
 
-## Screenshots
-![Home page](img/Screenshot1.png)
-![Pst page](img/Screenshot2.png)
-![Archive page](img/Screenshot3.png)
-![Category page](img/Screenshot4.png)
-![About page](img/Screenshot5.png)
+[Github]  
+username: your username  
+password: your password  
 
-## How to use it
-* Star & Fork the [repo](https://github.com/fengzhichu/fengzhichu-theme).
-* Rename repo as 'yourusername.github.io'.
-* You can delete gh-pages branch if you want.
-* Clone your <b>master branch</b> to local directory.
-* Custom the '_config.yml' to your style.
-* Install jekyll can refer 'ruby_install_by_rvm.sh', modify to suit your need.
-* Run jekyll serve -w.
+[Pocket]  
+consumer_key: your consumer key  
+access_token: your access token
 
-## Customization
+## Data Scrapping Scripts
 
-###_config.yml
-Some important configurations.
-* imageurl: Randomly change image which display on top of site.
-  * By default image changes everytime when open your site or reflash it. If you want to change image daily or weekly, just append '/daily' or 'weekly' to imageurl.
-* title: Display on browse tab.
-* hometitle: The first menu name of navigation bar.
-* yoursitetitle: Your LOGO place here.
-* visiblewords: Number of words which you want to display in post of homepage.
-* sechby:
-  * category: "Posted in" #Words before Category name.
-  * tag: "with" #Words before Tag name.
-  * example: Posted in 'Category name' with 'Tag name'.
+Github and Pocket datascrapping and structuring scripts are contained in main.py. Running main.py will run the routines to collect github and pocket data, then structure and save the data in the required format for visualization. Data for both github and Pocket are stored as dictionaries keyed on "hourly", "daily", "monthly" or "yearly". Each key contains a list of tuples in the format: [timestamp,repo or media type,tag,count] with counts summarized to the resolution of the items dictionary key. Github tuples are stored in commit_tag_tuples.json and Pocket tuples are stored in pocket_tag_tuples.json.
 
-###Tags
-Add new tag.
-* Annotate your post entry front-matter block as usual:
-```yml
----
-layout: post
-title: How To Use Tags And Categories On GitHub Pages Without Plugins
-category: programming
-tags: [github, github-pages, jekyll]
----
-```
-* Add an entry in your _data/tags.yml for every tag.
-```yml
-- slug: github-pages
-  name: GitHub Pages
-```
-* Create a .md file which name is your Tag slug for every tag.
-```yml
----
-layout: blog_by_tag
-tag: github-pages
-permalink: /blog/tag/github-pages/
----
-  ```
+## Data Scrapping Cache
 
-###Categories
-Similar as Tags.
+The timestamps for the last API pull for both github and Pocket are stored in cache_timestamps.json. Only data occuring after these timestamps will be requested from the github or pocket API. These timestamps are automatically updated after each API data pull when using main.py.
 
-## Thanks
-* Theme template: [type-theme](https://github.com/rohanchandra/type-theme)
-* Navigation bar: [ibireme's blog](http://blog.ibireme.com)
-* Features of Tag and Category: [HOW TO USE TAGS AND CATEGORIES ON GITHUB PAGES WITHOUT PLUGINS](http://www.minddust.com/post/tags-and-categories-on-github-pages/)
+## Github Commit Tagging
 
-## Enjoy
-- If you like, please star it. Thank you!
-- Enjoy it!
+Commit tags are parsed from the memo of each commit by indicating a tag keyword by prepending double-dashes to the tag word (ie. "--"). Words that are prepended with "--" are collected into a list and used as the tags for that commit. Example commit memo: "--python --pandas built pandas dataframe for datamunging" This commit would have 2 tags associated with it ["python","pandas"]
+
+## Online Course and Kaggle Data
+
+The learning visualizations are generated from manually entered data contained in course_data.csv and kaggle_data.csv files.
+
 
 ## Copyright & License
 Copyright (C) 2015 - Released under the MIT License.
