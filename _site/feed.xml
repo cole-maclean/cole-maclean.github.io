@@ -5,12 +5,12 @@
     <atom:link href="http://cole-maclean.github.io//feed.xml" rel="self" type="application/rss+xml"/>
     <link>http://cole-maclean.github.io//</link>
     <description>Data visualizations capturing what I&#39;m working on, what I&#39;m learning and what I&#39;m reading.</description>
-    <pubDate>Wed, 31 Aug 2016 11:48:51 +0200</pubDate>
+    <pubDate>Wed, 31 Aug 2016 15:27:56 +0200</pubDate>
     
       <item>
         <title>Meetup.com City Finder</title>
-        <link>http://cole-maclean.github.io//blog/Meetup.com-City-Finder/</link>
-        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Meetup.com-City-Finder/</guid>
+        <link>http://cole-maclean.github.io//blog/Meetup.com%20City%20Finder/</link>
+        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Meetup.com%20City%20Finder/</guid>
         <description>&lt;h2&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Back in February of this year, I packed up my comfortable Canadian life in Calgary, Alberta and moved to Barcelona, Spain to obtain an education in the Mediterranean lifestyle, European cultures, un poco español and some Artificial Intelligence. Having never moved to a new country on my own before, I was overwhelmed by the diverse languages and cultures of Barcelona, and for the first time, I felt truely lonely. With so many cool things to explore and experience in my new city, it took longer than I anticipated to find a group of people to share those experiences with. I realized that making new friends in your mid-twenties isn’t quite the same as it was back on the playground, so I began to break out of my comfort zone by using &lt;a href=&quot;https://www.meetup.com/&quot;&gt;meetup.com&lt;/a&gt; to attend events I found interesting. It’s been a fantastic application for finding new friends and helping me settle into my new life in Barcelona.&lt;/p&gt;
@@ -27,30 +27,30 @@
 
 &lt;h3&gt;Meetup.com API&lt;/h3&gt;
 
-&lt;p&gt;Meetup.com has a very well documented API, and memebers of the community have built API wrappers for many popular programming languages. Python being my language of choice, I’ve utilized the Python &lt;a href=&quot;https://pypi.python.org/pypi/meetup-api/&quot;&gt;meetup-api&lt;/a&gt; library for this project. To use the package, we first need to obtain an &lt;a href=&quot;https://secure.meetup.com/meetup_api/key/&quot;&gt;API key&lt;/a&gt; to be used as authentication for our client object.&lt;/p&gt;
+&lt;p&gt;Meetup.com has a very well documented API, and memebers of the community have built API wrappers for many popular programming languages. Python being my language of choice, I’ve utilized the Python &lt;a href=&quot;https://pypi.python.org/pypi/meetup-api/&quot;&gt;meetup-api&lt;/a&gt; library for this project. To use the package, we first need to obtain an &lt;a href=&quot;https://secure.meetup.com/meetup_api/key/&quot;&gt;API key&lt;/a&gt; to be used as authentication for our client object. &lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;meetup.api&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;configparser&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+&lt;p&gt;```python
+import meetup.api
+import configparser
+import time&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;configparser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConfigParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;secrets.ini&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;p&gt;config = configparser.ConfigParser()
+config.read(‘secrets.ini’)&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;meetup_api_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;meetup&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;api_key&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;meetup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meetup_api_key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;meetup_api_key = config.get(‘meetup’, ‘api_key’)
+client = meetup.api.Client(meetup_api_key)
+```&lt;/p&gt;
 
 &lt;p&gt;What we need from the API is to iterate over all groups that exist on the platform, collect the topic tags that group organizers assign their group, and collect the member count for each group. The meetup.api python package provides a GET function to obtain a list of groups having certain input filter parameters. The request returns a results object with a list of groups and their respecitive data including topic keywords.&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetGroups&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;51.0486&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;114.0708&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;topics&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#example meetup API call with Calgary as center&lt;/span&gt;
-                                                                                  &lt;span class=&quot;c&quot;&gt;#GPS coords and 50 mile radius. Optional data&lt;/span&gt;
-                                                                                  &lt;span class=&quot;c&quot;&gt;#request to return each groups list of topics&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;python
+groups = client.GetGroups(lat=51.0486, lon=-114.0708,radius=50,fields=[&#39;topics&#39;]) #example meetup API call with Calgary as center
+                                                                                  #GPS coords and 50 mile radius. Optional data
+                                                                                  #request to return each groups list of topics
+groups.results[1]
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;29/30 (10 seconds remaining)
+&lt;pre&gt;&lt;code&gt;29/30 (10 seconds remaining)
 
 
 
@@ -112,37 +112,35 @@
  &#39;visibility&#39;: &#39;public_limited&#39;,
  &#39;who&#39;: &#39;Business Professionals&#39;}
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;The meetup.com API does not provide a clear way to access every group on the platform, as the design of the system is such that a user selects a center location to search from in a geographic radius to ensure users are recommended groups close to their desired location. One option to obtain all availible groups is to input an impossibly high radius to encompass the entire globe.&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetGroups&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;51.0486&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;114.0708&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10000000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;topics&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;total_count&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;python
+groups = client.GetGroups(lat=51.0486, lon=-114.0708,radius=10000000000,fields=[&#39;topics&#39;])
+groups.meta[&#39;total_count&#39;]
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;28/30 (7 seconds remaining)
+&lt;pre&gt;&lt;code&gt;28/30 (7 seconds remaining)
 
 257973
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Although this option is technically feasible, and as of today returns a total of 257,973 unique groups, the total time to make that single request is over a minute. The meetup.com API is limited to only return 200 results at a time, which  would require over 1290 of these requests. To overcome the limit of 200 results, the API provides a page offset parameter to programmatically scroll through each page containing the next 200 groups.&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;groups_per_page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;
+&lt;p&gt;```python
+groups_per_page = 200&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetGroups&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;51.0486&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;114.0708&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#initial request to obtain total request pages&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;total_count&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groups_per_page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;total request groups = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;total_count&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#iterate over each request page&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;page &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;#get offseted request by current request page&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;groups&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetGroups&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;51.0486&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;114.0708&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;topics&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groups_per_page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;groups = client.GetGroups(lat=51.0486, lon=-114.0708,radius=5)#initial request to obtain total request pages
+time.sleep(1)
+pages = int(groups.meta[‘total_count’]/groups_per_page)
+print(“total request groups = “ + str(groups.meta[‘total_count’]))
+for i in range(0,pages + 1): #iterate over each request page
+    print(“page “ + str(i) + “/” + str(pages))
+    #get offseted request by current request page
+    groups = client.GetGroups(lat=51.0486, lon=-114.0708,radius=5,fields=[‘topics’],pages=groups_per_page,offset=i)
+```&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;29/30 (10 seconds remaining)
+&lt;pre&gt;&lt;code&gt;29/30 (10 seconds remaining)
 total request groups = 903
 page 0/4
 28/30 (8 seconds remaining)
@@ -155,7 +153,6 @@ page 3/4
 page 4/4
 24/30 (2 seconds remaining)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Initally I attempted to use the above method to iterate over the entire 1290 pages of groups on meetup.com, but each request required me to pass the impossibly high radius parameter with each respective offset page, which I worried was hammering meetup.com’s servers and would have taken a few days of straight API requests. The alternate solution I ended up using was to obtain a list of the top 250 global cities by population and use each as the centroid GPS location with a 300 mile radius to obtain the nearby groups. The complete API requests and data structure handling done for collecting the meetup.com data can be viewed in main.py in the projects &lt;a href=&quot;https://github.com/cole-maclean/meetupcityfinder/tree/gh-pages&quot;&gt;repo.&lt;/a&gt; To keep the data within githubs maximum 100mb file limit and ensure a performant d3.js visualization, city-topics with less then 100 members are filtered out of the dataset.&lt;/p&gt;
 
@@ -164,7 +161,7 @@ page 4/4
 &lt;p&gt;The visualization is made up of 3 main components:&lt;br /&gt;
 1. Globe with city markings indicating cities containing the user selected topics and color coded by that cities sum total ranking in each topic - the lowest total score is the highest ranking city for that unique list of topics. The base for the d3.js globe was modified from &lt;a href=&quot;https://gist.github.com/serdaradali/11346541&quot;&gt;here&lt;/a&gt;&lt;br /&gt;
 2. Top 10 ranking cities for user selected list of topics &lt;br /&gt;
-3. Detailed data for user selected city indicating that cities top 5 ranked topics, plus the rank for each of the user inputted topics&lt;/p&gt;
+3. Detailed data for user selected city indicating that cities top 5 ranked topics, plus the rank for each of the user inputted topics  &lt;/p&gt;
 
 &lt;h3&gt;My Example&lt;/h3&gt;
 
@@ -183,8 +180,8 @@ page 4/4
     
       <item>
         <title>Tesla Supercharger Network Predictive Modeling</title>
-        <link>http://cole-maclean.github.io//blog/Tesla-Supercharger-Network-Predictive-Model/</link>
-        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Tesla-Supercharger-Network-Predictive-Model/</guid>
+        <link>http://cole-maclean.github.io//blog/Tesla%20Supercharger%20Network%20Predictive%20Model/</link>
+        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Tesla%20Supercharger%20Network%20Predictive%20Model/</guid>
         <description>&lt;p&gt;&lt;img src=&quot;/img/SCnetwork.gif&quot; alt=&quot;Network&quot; /&gt;&lt;/p&gt;
 
 &lt;h2&gt;Introduction&lt;/h2&gt;
@@ -202,8 +199,8 @@ page 4/4
     
       <item>
         <title>Tesla Supercharger Network Exploratory Data Analysis</title>
-        <link>http://cole-maclean.github.io//blog/Tesla-Supercharger-Network-Exploratory-Data-Analysis/</link>
-        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Tesla-Supercharger-Network-Exploratory-Data-Analysis/</guid>
+        <link>http://cole-maclean.github.io//blog/Tesla%20Supercharger%20Network%20Exploratory%20Data%20Analysis/</link>
+        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Tesla%20Supercharger%20Network%20Exploratory%20Data%20Analysis/</guid>
         <description>&lt;p&gt;&lt;img src=&quot;/img/network_thumb.PNG&quot; alt=&quot;Network&quot; /&gt;&lt;/p&gt;
 
 &lt;h2&gt;Introduction&lt;/h2&gt;
@@ -219,8 +216,8 @@ page 4/4
     
       <item>
         <title>Classifying Distracted Driver Images</title>
-        <link>http://cole-maclean.github.io//blog/Classifying-Distracted-Driver-Images/</link>
-        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Classifying-Distracted-Driver-Images/</guid>
+        <link>http://cole-maclean.github.io//blog/Classifying%20Distracted%20Driver%20Images/</link>
+        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Classifying%20Distracted%20Driver%20Images/</guid>
         <description>&lt;p&gt;The final report PDF for the techniques used in this competetion can be downloaded &lt;a href=&quot;/blog/files/kaggle-distracted-driver.pdf&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 09 Jun 2016 00:00:00 +0200</pubDate>
@@ -228,8 +225,8 @@ page 4/4
     
       <item>
         <title>Growth of the Scientific Boundary</title>
-        <link>http://cole-maclean.github.io//blog/Growth-of-the-Scientific-Boundary/</link>
-        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Growth-of-the-Scientific-Boundary/</guid>
+        <link>http://cole-maclean.github.io//blog/Growth%20of%20the%20Scientific%20Boundary/</link>
+        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Growth%20of%20the%20Scientific%20Boundary/</guid>
         <description>&lt;p&gt;Visualization can be viewed &lt;a href=&quot;http://cole-maclean.github.io/Udacity-DSNDP6/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2&gt;Summary&lt;/h2&gt;
@@ -248,7 +245,7 @@ page 4/4
 
 &lt;p&gt;&lt;img src=&quot;/img/fractal_sketch.JPG&quot; alt=&quot;Fractal Sketch&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Using this feedback, the design evolved into a simpler bubble representation of the dataset.&lt;/p&gt;
+&lt;p&gt;Using this feedback, the design evolved into a simpler bubble representation of the dataset. &lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/bubble_sketch.JPG&quot; alt=&quot;Bubble Sketch&quot; /&gt;&lt;/p&gt;
 
@@ -297,13 +294,13 @@ page 4/4
     
       <item>
         <title>Identifying Fraud from Emails using Machine Learning</title>
-        <link>http://cole-maclean.github.io//blog/Identifying-Fraud-from-Emails-using-Machine-Learning/</link>
-        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Identifying-Fraud-from-Emails-using-Machine-Learning/</guid>
+        <link>http://cole-maclean.github.io//blog/Identifying%20Fraud%20from%20Emails%20using%20Machine%20Learning/</link>
+        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Identifying%20Fraud%20from%20Emails%20using%20Machine%20Learning/</guid>
         <description>&lt;h1&gt;Identifying Fraud from Enron Emails&lt;/h1&gt;
 
 &lt;h2&gt;Objective&lt;/h2&gt;
 
-&lt;p&gt;Using the Enron email corpus data to extract and engineer model features, we will attempt to develop a classifier able to identify a “Person of Interest” (PoI) that may have been involved or had an impact on the fraud that occured within the Enron scandal. A list of known PoI has been hand generated from &lt;a href=&quot;http://usatoday30.usatoday.com/money/industries/energy/2005-12-28-enron-participants_x.htm&quot;&gt;this&lt;/a&gt; USATODAY article by the friendly folks at Udacity, who define a PoI as individuals who were indicted, reached a settlement or plea deal with the government, or testified in exchange for prosecution immunity. We will use these PoI labels with the Enron email corpus data to develop the classifier.&lt;/p&gt;
+&lt;p&gt;Using the Enron email corpus data to extract and engineer model features, we will attempt to develop a classifier able to identify a “Person of Interest” (PoI) that may have been involved or had an impact on the fraud that occured within the Enron scandal. A list of known PoI has been hand generated from &lt;a href=&quot;http://usatoday30.usatoday.com/money/industries/energy/2005-12-28-enron-participants_x.htm&quot;&gt;this&lt;/a&gt; USATODAY article by the friendly folks at Udacity, who define a PoI as individuals who were indicted, reached a settlement or plea deal with the government, or testified in exchange for prosecution immunity. We will use these PoI labels with the Enron email corpus data to develop the classifier.  &lt;/p&gt;
 
 &lt;h2&gt;Data Structure&lt;/h2&gt;
 
@@ -471,43 +468,41 @@ page 4/4
 
 &lt;p&gt;As was discussed above, restricted_stock_deferred, director_fees, loan_advances and deferral_payments have been ommitted as features for the classification model due to their small sample size. There also exists features that are labels instead of useful datum, such as name and email_address. These will not be used as features in the classification model. This leaves us with 15 potentially useful features to select from. Reviewing the data structure, there are two general categories of data: Finanical and Meta-Email. These overarching data categories seem well suited for Primary Component Analysis, to build a featureset that encompasses the most predictive information from the features and avoids dependant features such as total_payments and salary causing erroneous classification or overfitting. Applying PCA to the 15 features to reduce the dimensioanilty to 2 overarching categories, we can visualize the transformed feature relationships.&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pd&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pickle&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ggplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;feature_format&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;featureFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetFeatureSplit&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;my_dataset.pkl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pickle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;my_feature_list.pkl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pickle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;featureFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sort_keys&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;features&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetFeatureSplit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#Apply PCA to dataset to allow for visualization&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.decomposition&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;reduced_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_components&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit_transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reduced_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;reduced_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reduced_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reduced_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;param1&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;param2&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pca_plt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ggplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;param1&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;param2&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;\
-    &lt;span class=&quot;n&quot;&gt;geom_point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pca_plt&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pca_plt_zoomed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pca_plt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xlim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2500000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ylim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3500000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pca_plt_zoomed&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;python
+%matplotlib inline
+import numpy as np
+import pandas as pd
+import pickle
+from ggplot import *
+from feature_format import featureFormat, targetFeatureSplit
+with open(&quot;my_dataset.pkl&quot;, &quot;r&quot;) as data_file:
+    my_dataset = pickle.load(data_file)
+with open(&quot;my_feature_list.pkl&quot;, &quot;r&quot;) as data_file:
+    features_list = pickle.load(data_file)
+data = featureFormat(my_dataset, features_list, sort_keys = True)
+labels, features = targetFeatureSplit(data)
+#Apply PCA to dataset to allow for visualization
+from sklearn.decomposition import PCA
+reduced_data = PCA(n_components=2).fit_transform(features)
+labels = np.array(labels).reshape(len(reduced_data[:,0]),1)
+reduced_data = np.hstack((reduced_data,labels))
+df = pd.DataFrame(reduced_data,columns = [&#39;param1&#39;, &#39;param2&#39;,&#39;poi&#39;])
+pca_plt = ggplot(df, aes(x=&#39;param1&#39;, y=&#39;param2&#39;, color=&#39;poi&#39;)) +\
+    geom_point()
+print pca_plt
+pca_plt_zoomed = pca_plt + xlim(-2500000,5000000) +ylim(-1000000,3500000)
+print pca_plt_zoomed
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/output_4_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ggplot: (32479948)&amp;gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ggplot: (32479948)&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/output_4_2.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ggplot: (32864214)&amp;gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ggplot: (32864214)&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Reviewing the PCA plots, there appears to be a few PoI outliers that should be easy to classify, but zooming in on the cluster of datapoints shows PoI data points are very commingled with non-PoI data points that may be difficult to adequately classify. This model may need more advanced features to develop an adequate classifier.&lt;/p&gt;
 
@@ -516,38 +511,35 @@ page 4/4
 &lt;p&gt;It is likely that additional features are required to adequately model a PoI classifier. Most of the supplied features are absolute values of a persons’ financial compensation or email correspondance. It makes sense that a more relative measure of these features is appropriate to use when comparing whether someone is a PoI or not. Three additional features have been engineered for use in classifier development:&lt;br /&gt;
 1. perc_salary - The percentage each employees’ salary makes of of their total payment, defined as salary/total_payments. This will represent if the employees compensation is made up of complex additional payments or just a basic salary.
 2. perc_to_poi - The percentage of employees total sent emails to a PoI. This will represent the degree an employee spends their time interacting with a PoI.
-3. perc_from_poi - The percentage of employees total recieved emails from a PoI. This will represent the degree a PoI spends their time interacting with an employee.&lt;/p&gt;
+3. perc_from_poi - The percentage of employees total recieved emails from a PoI. This will represent the degree a PoI spends their time interacting with an employee. &lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;eng_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eng_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;perc_salary&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;perc_to_poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;perc_from_poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ggplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;perc_salary&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;perc_to_poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;\
-    &lt;span class=&quot;n&quot;&gt;geom_point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ggplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;perc_salary&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;perc_from_poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;\
-    &lt;span class=&quot;n&quot;&gt;geom_point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ggplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;perc_to_poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;perc_from_poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;poi&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;\
-&lt;span class=&quot;n&quot;&gt;geom_point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;python
+eng_data = np.hstack((data[:,(16,17,18)],labels))
+df = pd.DataFrame(eng_data,columns = [&#39;perc_salary&#39;, &#39;perc_to_poi&#39;,&#39;perc_from_poi&#39;,&#39;poi&#39;])
+print ggplot(df, aes(x=&#39;perc_salary&#39;, y=&#39;perc_to_poi&#39;, color=&#39;poi&#39;)) +\
+    geom_point()
+print ggplot(df, aes(x=&#39;perc_salary&#39;, y=&#39;perc_from_poi&#39;, color=&#39;poi&#39;)) +\
+    geom_point()
+print ggplot(df, aes(x=&#39;perc_to_poi&#39;, y=&#39;perc_from_poi&#39;, color=&#39;poi&#39;)) +\
+geom_point()
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/output_7_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ggplot: (36868016)&amp;gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ggplot: (36868016)&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/output_7_2.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ggplot: (35575721)&amp;gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ggplot: (35575721)&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/output_7_4.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;ggplot: (36864902)&amp;gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ggplot: (36864902)&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;p&gt;In reviewing the plots, both the perc_to_poi vs perc_salary and the perc_from_poi vs perc_to_poi plots show good seperation of PoI from non-PoI datapoints. The perc_from_poi vs perc_salary plot shows less of a seperation, with many PoI data points closely clustered with non-PoI datum. These advanced features seem to show more promise then the simple PCA approach above, but we will test and compare the relative performance of tuned classifiers using the two approaches.&lt;/p&gt;
+&lt;p&gt;In reviewing the plots, both the perc_to_poi vs perc_salary and the perc_from_poi vs perc_to_poi plots show good seperation of PoI from non-PoI datapoints. The perc_from_poi vs perc_salary plot shows less of a seperation, with many PoI data points closely clustered with non-PoI datum. These advanced features seem to show more promise then the simple PCA approach above, but we will test and compare the relative performance of tuned classifiers using the two approaches. &lt;/p&gt;
 
 &lt;h1&gt;Model Development, Tuning and Evaluation&lt;/h1&gt;
 
@@ -561,45 +553,44 @@ page 4/4
 
 &lt;h2&gt;PCA Featureset Model&lt;/h2&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.pipeline&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;svm&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.grid_search&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.neighbors&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KNeighborsClassifier&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.ensemble&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RandomForestClassifier&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.preprocessing&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.cross_validation&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_test_split&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.decomposition&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tester&lt;/span&gt;
+&lt;p&gt;```python
+from sklearn.pipeline import Pipeline
+from sklearn import svm
+from sklearn.grid_search import GridSearchCV
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.cross_validation import train_test_split
+from sklearn.decomposition import PCA
+import tester&lt;/p&gt;
 
+&lt;p&gt;data = featureFormat(my_dataset, features_list, sort_keys = True)
+labels, features = targetFeatureSplit(data)&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;featureFormat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sort_keys&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;features&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetFeatureSplit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;p&gt;pca_svm = Pipeline([(‘pca’,PCA(n_components=2)),(‘scaler’,StandardScaler()),(‘svm’,svm.SVC())])
+param_grid = ([{‘svm__C’: [1000,10000],
+                ‘svm__gamma’: [0.01,0.0001],
+                ‘svm__degree’:[2,3],
+                ‘svm__kernel’: [‘linear’,’rbf’,’poly’]}])
+svm_clf = GridSearchCV(pca_svm,param_grid,scoring=’recall’).fit(features,labels).best_estimator_
+pca_knb = Pipeline([(‘pca’,PCA(n_components=2)),(‘scaler’,StandardScaler()),(‘knb’,KNeighborsClassifier())])
+param_grid = ([{‘knb__n_neighbors’: [4,5,6]}])
+knb_clf = GridSearchCV(pca_knb,param_grid,scoring=’recall’).fit(features,labels).best_estimator_
+pca_rfst = Pipeline([(‘pca’,PCA(n_components=2)),(‘scaler’,StandardScaler()),
+                 (‘rfst’,RandomForestClassifier())])
+param_grid = ([{‘rfst__n_estimators’: [4,5,6]}])
+rfst_clf = GridSearchCV(pca_rfst,param_grid,scoring=’recall’).fit(features,labels).best_estimator_&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;pca_svm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;pca&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_components&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;scaler&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;svm&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SVC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;svm__C&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__gamma&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__degree&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__kernel&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;linear&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;rbf&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;poly&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pca_svm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;recall&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best_estimator_&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pca_knb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;pca&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_components&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;scaler&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;knb&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;KNeighborsClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;knb__n_neighbors&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;knb_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pca_knb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;recall&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best_estimator_&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pca_rfst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;pca&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_components&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;scaler&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),&lt;/span&gt;
-                 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;rfst&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RandomForestClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;rfst__n_estimators&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;rfst_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pca_rfst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;recall&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best_estimator_&lt;/span&gt;
+&lt;p&gt;print svm_clf
+tester.test_classifier(svm_clf,my_dataset,features_list)
+print knb_clf
+tester.test_classifier(knb_clf,my_dataset,features_list)
+print rfst_clf
+tester.test_classifier(rfst_clf,my_dataset,features_list)&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;knb_clf&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;knb_clf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rfst_clf&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rfst_clf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;p&gt;```&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Pipeline(steps=[(&#39;pca&#39;, PCA(copy=True, n_components=2, whiten=False)), (&#39;scaler&#39;, StandardScaler(copy=True, with_mean=True, with_std=True)), (&#39;svm&#39;, SVC(C=1000, cache_size=200, class_weight=None, coef0=0.0, degree=2,
+&lt;pre&gt;&lt;code&gt;Pipeline(steps=[(&#39;pca&#39;, PCA(copy=True, n_components=2, whiten=False)), (&#39;scaler&#39;, StandardScaler(copy=True, with_mean=True, with_std=True)), (&#39;svm&#39;, SVC(C=1000, cache_size=200, class_weight=None, coef0=0.0, degree=2,
   gamma=0.01, kernel=&#39;rbf&#39;, max_iter=-1, probability=False,
   random_state=None, shrinking=True, tol=0.001, verbose=False))])
 	Accuracy: 0.87573	Precision: 0.68579	Recall: 0.12550	F1: 0.21217	F2: 0.15001
@@ -619,39 +610,38 @@ Pipeline(steps=[(&#39;pca&#39;, PCA(copy=True, n_components=2, whiten=False)), (
 	Accuracy: 0.83913	Precision: 0.25150	Recall: 0.10450	F1: 0.14765	F2: 0.11833
 	Total predictions: 15000	True positives:  209	False positives:  622	False negatives: 1791	True negatives: 12378
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Reviewing the results, we see that the svm and KNeighbors classifiers have fairly good Precision, meaning they are able to properly identify PoI wihout too many incorrectly labelled PoI. The RandomForestClassiefier has poorer Precision performance. The Recall for all classifiers is rather poor, with the svm classifier having the highest Recall at 0.1255. This indicates that, although the classifiers do not miss-label many non-PoI employees, they tend to under-label correctly people that should be considered PoI. Considering the use case for this model is likely to be a filter that could provide a short-list of people to investigate further, having a high Recall is important to ensure the short-list captures people that are likely to be PoI. Given this, it is likely the above classifiers are not performant enough to provide sufficient value in this investigation. From visual inspection it was seen that the data relationships showed little classifcation potential and after exhaustively tuning these classifiers, that interpretation seems to be correct. The PCA featureset does not seem to provide enough informative characteristics to build a suitable classifier, and further feature engineering is likely required.&lt;/p&gt;
 
 &lt;h2&gt;Engineered Feature Model&lt;/h2&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.feature_selection&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SelectKBest&lt;/span&gt;
+&lt;p&gt;```python
+from sklearn.feature_selection import SelectKBest&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;eng_svm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;scaler&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;kbest&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SelectKBest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;svm&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SVC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;kbest__k&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__C&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__gamma&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__degree&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__kernel&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;linear&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;rbf&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;poly&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eng_svm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;recall&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best_estimator_&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;eng_knb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;scaler&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;kbest&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SelectKBest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;knb&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;KNeighborsClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;kbest__k&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;knb__n_neighbors&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;knb_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eng_knb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;recall&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best_estimator_&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;eng_rfst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;scaler&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;kbest&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SelectKBest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),&lt;/span&gt;
-                 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;rfst&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RandomForestClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;kbest__k&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;rfst__n_estimators&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;rfst_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eng_rfst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;recall&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best_estimator_&lt;/span&gt;
+&lt;p&gt;eng_svm = Pipeline([(‘scaler’,StandardScaler()),(‘kbest’,SelectKBest()),(‘svm’,svm.SVC())])
+param_grid = ([{‘kbest__k’:[3,4,5,6],
+                ‘svm__C’: [1,10,100,1000],
+                ‘svm__gamma’: [1,0.1,0.01,0.001],
+                ‘svm__degree’:[2,3,4],
+                ‘svm__kernel’: [‘linear’,’rbf’,’poly’]}])
+svm_clf = GridSearchCV(eng_svm,param_grid,scoring=’recall’).fit(features,labels).best_estimator_
+eng_knb = Pipeline([(‘scaler’,StandardScaler()),(‘kbest’,SelectKBest()),(‘knb’,KNeighborsClassifier())])
+param_grid = ([{‘kbest__k’:[3,4,5,6],’knb__n_neighbors’: [2,3,4,5,6]}])
+knb_clf = GridSearchCV(eng_knb,param_grid,scoring=’recall’).fit(features,labels).best_estimator_
+eng_rfst = Pipeline([(‘scaler’,StandardScaler()),(‘kbest’,SelectKBest()),
+                 (‘rfst’,RandomForestClassifier())])
+param_grid = ([{‘kbest__k’:[3,4,5,6],’rfst__n_estimators’: [2,3,4,5,6]}])
+rfst_clf = GridSearchCV(eng_rfst,param_grid,scoring=’recall’).fit(features,labels).best_estimator_&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;knb_clf&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;knb_clf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rfst_clf&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rfst_clf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;print svm_clf
+tester.test_classifier(svm_clf,my_dataset,features_list)
+print knb_clf
+tester.test_classifier(knb_clf,my_dataset,features_list)
+print rfst_clf
+tester.test_classifier(rfst_clf,my_dataset,features_list)
+```&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Pipeline(steps=[(&#39;scaler&#39;, StandardScaler(copy=True, with_mean=True, with_std=True)), (&#39;kbest&#39;, SelectKBest(k=6, score_func=&amp;lt;function f_classif at 0x000000001F36F128&amp;gt;)), (&#39;svm&#39;, SVC(C=1, cache_size=200, class_weight=None, coef0=0.0, degree=4, gamma=1,
+&lt;pre&gt;&lt;code&gt;Pipeline(steps=[(&#39;scaler&#39;, StandardScaler(copy=True, with_mean=True, with_std=True)), (&#39;kbest&#39;, SelectKBest(k=6, score_func=&amp;lt;function f_classif at 0x000000001F36F128&amp;gt;)), (&#39;svm&#39;, SVC(C=1, cache_size=200, class_weight=None, coef0=0.0, degree=4, gamma=1,
   kernel=&#39;poly&#39;, max_iter=-1, probability=False, random_state=None,
   shrinking=True, tol=0.001, verbose=False))])
 	Accuracy: 0.81753	Precision: 0.25351	Recall: 0.18950	F1: 0.21688	F2: 0.19958
@@ -669,43 +659,42 @@ Pipeline(steps=[(&#39;scaler&#39;, StandardScaler(copy=True, with_mean=True, wit
 	Accuracy: 0.83020	Precision: 0.32066	Recall: 0.24450	F1: 0.27745	F2: 0.25669
 	Total predictions: 15000	True positives:  489	False positives: 1036	False negatives: 1511	True negatives: 11964
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;Although we managed to improve our best Recall score with a tuned KNeibors Classifier, the Precision performance was dramitacally reduced. At this point, it would likely be beneficial to perform anothet iteration of the model development process in order to better explore the data, develop features and investigate other classisifier algorithms. However, there is one more approach that may be useful to investigate: developing a hybrid model by combining the two input theories outlined above.&lt;/p&gt;
 
 &lt;h2&gt;Hybrid Model&lt;/h2&gt;
 
-&lt;p&gt;Using sklearns &lt;a href=&quot;http://scikit-learn.org/stable/modules/pipeline.html&quot;&gt;FeatureUninion&lt;/a&gt; module, we can combine the PCA reduced dimensionality dataset with the engineered feature dataset as a hybrid featureset for model development.&lt;/p&gt;
+&lt;p&gt;Using sklearns &lt;a href=&quot;http://scikit-learn.org/stable/modules/pipeline.html&quot;&gt;FeatureUninion&lt;/a&gt; module, we can combine the PCA reduced dimensionality dataset with the engineered feature dataset as a hybrid featureset for model development. &lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.pipeline&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FeatureUnion&lt;/span&gt;
+&lt;p&gt;```python
+from sklearn.pipeline import FeatureUnion&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;combined_features&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FeatureUnion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pca&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kbest&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SelectKBest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())])&lt;/span&gt;
+&lt;p&gt;combined_features = FeatureUnion([(“pca”, PCA()), (“kbest”, SelectKBest())])&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;hybrid_svm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;combined_features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;scaler&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;svm&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SVC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features__pca__n_components&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features__kbest__k&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__C&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__gamma&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__degree&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&#39;svm__kernel&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;rbf&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;poly&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hybrid_svm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;recall&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best_estimator_&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;hybrid_knb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;combined_features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;scaler&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;knb&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;KNeighborsClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features__pca__n_components&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features__kbest__k&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;knb__n_neighbors&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;knb_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hybrid_knb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;recall&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best_estimator_&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;hybrid_rfst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;combined_features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;scaler&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),&lt;/span&gt;
-                 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;rfst&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RandomForestClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features__pca__n_components&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features__kbest__k&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;rfst__n_estimators&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;rfst_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hybrid_rfst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param_grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;recall&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best_estimator_&lt;/span&gt;
+&lt;p&gt;hybrid_svm = Pipeline([(‘features’,combined_features),(‘scaler’,StandardScaler()),(‘svm’,svm.SVC())])
+param_grid = ([{‘features__pca__n_components’:[2,3,4,5,6,7],’features__kbest__k’:[2,3,4,5,6,7],
+                ‘svm__C’: [1,10,100,1000],
+                ‘svm__gamma’: [1,0.1,0.01,0.001],
+                ‘svm__degree’:[2,3,4],
+                ‘svm__kernel’: [‘rbf’,’poly’]}])
+svm_clf = GridSearchCV(hybrid_svm,param_grid,scoring=’recall’).fit(features,labels).best_estimator_
+hybrid_knb = Pipeline([(‘features’,combined_features),(‘scaler’,StandardScaler()),(‘knb’,KNeighborsClassifier())])
+param_grid = ([{‘features__pca__n_components’:[2,3,4,5,6],’features__kbest__k’:[2,3,4,5,6],’knb__n_neighbors’: [1,2,3,4,5,6,7]}])
+knb_clf = GridSearchCV(hybrid_knb,param_grid,scoring=’recall’).fit(features,labels).best_estimator_
+hybrid_rfst = Pipeline([(‘features’,combined_features),(‘scaler’,StandardScaler()),
+                 (‘rfst’,RandomForestClassifier())])
+param_grid = ([{‘features__pca__n_components’:[2,3,4,5,6],’features__kbest__k’:[2,3,4,5,6],’rfst__n_estimators’: [2,3,4,5,6,7]}])
+rfst_clf = GridSearchCV(hybrid_rfst,param_grid,scoring=’recall’).fit(features,labels).best_estimator_&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;knb_clf&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;knb_clf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rfst_clf&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rfst_clf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;print svm_clf
+tester.test_classifier(svm_clf,my_dataset,features_list)
+print knb_clf
+tester.test_classifier(knb_clf,my_dataset,features_list)
+print rfst_clf
+tester.test_classifier(rfst_clf,my_dataset,features_list)
+```&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Pipeline(steps=[(&#39;features&#39;, FeatureUnion(n_jobs=1,
+&lt;pre&gt;&lt;code&gt;Pipeline(steps=[(&#39;features&#39;, FeatureUnion(n_jobs=1,
        transformer_list=[(&#39;pca&#39;, PCA(copy=True, n_components=7, whiten=False)), (&#39;kbest&#39;, SelectKBest(k=5, score_func=&amp;lt;function f_classif at 0x000000001F36F128&amp;gt;))],
        transformer_weights=None)), (&#39;scaler&#39;, StandardScaler(copy=True, with_mean=True, with...y&#39;, max_iter=-1, probability=False, random_state=None,
   shrinking=True, tol=0.001, verbose=False))])
@@ -727,26 +716,25 @@ Pipeline(steps=[(&#39;features&#39;, FeatureUnion(n_jobs=1,
 	Accuracy: 0.83400	Precision: 0.32771	Recall: 0.23300	F1: 0.27236	F2: 0.24729
 	Total predictions: 15000	True positives:  466	False positives:  956	False negatives: 1534	True negatives: 12044
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;The Hybrid model was able to develop a classifier that satisfies the minimun target of 0.3 for both Precision and Recall with an SVM classifier. Although the model’s Precision is reduced compared to previous iterations, it is better suited for correctly identifier employees that are PoI in order to develop a short-list of people to investigate further.&lt;/p&gt;
 
 &lt;h2&gt;Final Model&lt;/h2&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;operator&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;combined_features&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FeatureUnion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pca&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_components&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kbest&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SelectKBest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;final_svm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;combined_features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;scaler&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),&lt;/span&gt;
-                    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;svm&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SVC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;degree&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kernel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;poly&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gamma&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;final_svm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;feature_scores&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;features&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;kbest&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scores_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                         &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;itemgetter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;feature_scores&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tester&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_classifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;svm_clf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;python
+import operator
+combined_features = FeatureUnion([(&quot;pca&quot;, PCA(n_components=7)), (&quot;kbest&quot;, SelectKBest(k=6))])
+final_svm = Pipeline([(&#39;features&#39;,combined_features),(&#39;scaler&#39;,StandardScaler()),
+                    (&#39;svm&#39;,svm.SVC(C=1,degree=3,kernel=&#39;poly&#39;,gamma=1))])
+svm_clf = final_svm.fit(features,labels)
+feature_scores = sorted({features_list[i]:svm_clf.get_params()[&#39;features&#39;].get_params()[&#39;kbest&#39;].scores_[i]
+                         for i in range(0,18)}.items(),reverse=True, key=operator.itemgetter(1))
+print feature_scores
+print svm_clf.get_params()
+tester.test_classifier(svm_clf,my_dataset,features_list)
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[(&#39;restricted_stock&#39;, 25.380105299760199), (&#39;from_poi_to_this_person&#39;, 24.752523020258508), (&#39;other&#39;, 21.327890413979102), (&#39;exercised_stock_options&#39;, 18.861795316466416), (&#39;perc_salary&#39;, 16.719777335704574), (&#39;long_term_incentive&#39;, 11.732698076065354), (&#39;bonus&#39;, 10.222904205832778), (&#39;total_payments&#39;, 9.4807432034789336), (&#39;total_stock_value&#39;, 8.9678193476776205), (&#39;salary&#39;, 6.3746144901977475), (&#39;to_messages&#39;, 5.7652373136035786), (&#39;expenses&#39;, 4.2635766381444693), (&#39;from_this_person_to_poi&#39;, 3.0545709279872115), (&#39;deferred_income&#39;, 2.8591257010691469), (&#39;perc_to_poi&#39;, 1.5752718701560835), (&#39;from_messages&#39;, 1.3690711377259386), (&#39;shared_receipt_with_poi&#39;, 0.58945562335007018), (&#39;poi&#39;, 0.37046177768797534)]
+&lt;pre&gt;&lt;code&gt;[(&#39;restricted_stock&#39;, 25.380105299760199), (&#39;from_poi_to_this_person&#39;, 24.752523020258508), (&#39;other&#39;, 21.327890413979102), (&#39;exercised_stock_options&#39;, 18.861795316466416), (&#39;perc_salary&#39;, 16.719777335704574), (&#39;long_term_incentive&#39;, 11.732698076065354), (&#39;bonus&#39;, 10.222904205832778), (&#39;total_payments&#39;, 9.4807432034789336), (&#39;total_stock_value&#39;, 8.9678193476776205), (&#39;salary&#39;, 6.3746144901977475), (&#39;to_messages&#39;, 5.7652373136035786), (&#39;expenses&#39;, 4.2635766381444693), (&#39;from_this_person_to_poi&#39;, 3.0545709279872115), (&#39;deferred_income&#39;, 2.8591257010691469), (&#39;perc_to_poi&#39;, 1.5752718701560835), (&#39;from_messages&#39;, 1.3690711377259386), (&#39;shared_receipt_with_poi&#39;, 0.58945562335007018), (&#39;poi&#39;, 0.37046177768797534)]
 {&#39;features&#39;: FeatureUnion(n_jobs=1,
        transformer_list=[(&#39;pca&#39;, PCA(copy=True, n_components=7, whiten=False)), (&#39;kbest&#39;, SelectKBest(k=6, score_func=&amp;lt;function f_classif at 0x000000001F36F128&amp;gt;))],
        transformer_weights=None), &#39;scaler&#39;: StandardScaler(copy=True, with_mean=True, with_std=True), &#39;features__pca__copy&#39;: True, &#39;svm__shrinking&#39;: True, &#39;svm__gamma&#39;: 1, &#39;svm__verbose&#39;: False, &#39;svm__probability&#39;: False, &#39;features__pca__whiten&#39;: False, &#39;features__kbest__k&#39;: 6, &#39;features__kbest__score_func&#39;: &amp;lt;function f_classif at 0x000000001F36F128&amp;gt;, &#39;svm__cache_size&#39;: 200, &#39;scaler__copy&#39;: True, &#39;svm__degree&#39;: 3, &#39;scaler__with_mean&#39;: True, &#39;features__kbest&#39;: SelectKBest(k=6, score_func=&amp;lt;function f_classif at 0x000000001F36F128&amp;gt;), &#39;svm__kernel&#39;: &#39;poly&#39;, &#39;svm__max_iter&#39;: -1, &#39;svm__coef0&#39;: 0.0, &#39;svm__random_state&#39;: None, &#39;scaler__with_std&#39;: True, &#39;svm&#39;: SVC(C=1, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=1,
@@ -755,7 +743,6 @@ Pipeline(steps=[(&#39;features&#39;, FeatureUnion(n_jobs=1,
 	Accuracy: 0.81413	Precision: 0.31398	Recall: 0.33250	F1: 0.32297	F2: 0.32862
 	Total predictions: 15000	True positives:  665	False positives: 1453	False negatives: 1335	True negatives: 11547
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h1&gt;Conclusions and Reflection&lt;/h1&gt;
 
@@ -763,15 +750,15 @@ Pipeline(steps=[(&#39;features&#39;, FeatureUnion(n_jobs=1,
 
 &lt;p&gt;Using the GridSearch functionality of sklearn allowed for the automated tuning of the classifier algorithms. This tuning allowed for the use of different parameters in the classifiers, such as the type of svm (linear, rbf or polynomial) or the number of nearest neighbors to use in the KNeighbors classifier. This tuning is important in producing an effective classifier, as different datasets will result in different patterns. A linear svm may work well with clearly split datasets, but a polynimal svm will be better suited to datasets that result in curved patterns. Without correctly tuning the classification algorithms, a sufficient model will be difficult to develop.&lt;/p&gt;
 
-&lt;p&gt;Although the final model meets the minimum goal of Precision and Recall &amp;gt;0.3, there is likely a more optimal classifier that could be developed by further exploring the dataset, engineering more intelligent features and investigating other classifier algorithms better suited to this problem. This model is also likely overfitted to this dataset and probably not directly useful in future investigations, but the proof of concept could be utilized by the investigators to generate their own model as they begin to identify PoI in their own investigation of a similiar nature to the Enron scandal. It would also be interesting to investigate if other features can be developed to help identify potential PoI, such as performing Natural Language Processing on the content of email messages to descern if any conversation patterns emerged between PoI.&lt;/p&gt;
+&lt;p&gt;Although the final model meets the minimum goal of Precision and Recall &amp;gt;0.3, there is likely a more optimal classifier that could be developed by further exploring the dataset, engineering more intelligent features and investigating other classifier algorithms better suited to this problem. This model is also likely overfitted to this dataset and probably not directly useful in future investigations, but the proof of concept could be utilized by the investigators to generate their own model as they begin to identify PoI in their own investigation of a similiar nature to the Enron scandal. It would also be interesting to investigate if other features can be developed to help identify potential PoI, such as performing Natural Language Processing on the content of email messages to descern if any conversation patterns emerged between PoI. &lt;/p&gt;
 </description>
         <pubDate>Sun, 08 Nov 2015 00:00:00 +0100</pubDate>
       </item>
     
       <item>
         <title>Fanduel MLB Exploratory Data Analysis</title>
-        <link>http://cole-maclean.github.io//blog/Fanduel-MLB-Exploratory-Data-Analysis/</link>
-        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Fanduel-MLB-Exploratory-Data-Analysis/</guid>
+        <link>http://cole-maclean.github.io//blog/Fanduel%20MLB%20Exploratory%20Data%20Analysis/</link>
+        <guid isPermaLink="true">http://cole-maclean.github.io//blog/Fanduel%20MLB%20Exploratory%20Data%20Analysis/</guid>
         <description>&lt;h1&gt;
 Introduction
 &lt;/h1&gt;
@@ -802,7 +789,7 @@ Data Structure and Sources
 
 &lt;ol&gt;
   &lt;li&gt;Historical baseball game and player data -
-&lt;a href=&quot;https://erikberg.com/api&quot;&gt;XMLStats&lt;/a&gt;&lt;/li&gt;
+&lt;a href=&quot;https://erikberg.com/api&quot;&gt;XMLStats&lt;/a&gt;  &lt;/li&gt;
   &lt;li&gt;Historical team lineup data - &lt;a href=&quot;http://www.baseballpress.com/lineups&quot;&gt;Baseball
 Press&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Historical Weather Data -
@@ -886,21 +873,19 @@ Player Fanduel Points
 &lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;/img/uni_FD_points-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  -1.750  -0.250   0.250   1.529   2.500  27.750
 
 ## Standard Deviation =  2.695974
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/uni_FD_points-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  -9.000   1.000   2.000   3.565   4.200  30.000
 
 ## Standard Deviation =  4.733862
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;For batters, the distribution of FD_points seems to follow a decaying
 distribution, while pitchers FD_points seem to be somewhat normally
@@ -970,15 +955,13 @@ batters rbi’s and pitchers strikeouts. Code adapted from
 
 &lt;p&gt;&lt;img src=&quot;/img/bi_batter-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## r2 =  0.9910313
+&lt;pre&gt;&lt;code&gt;## r2 =  0.9910313
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/bi_batter-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## r2 =  0.9967708
+&lt;pre&gt;&lt;code&gt;## r2 =  0.9967708
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;The strong linear relationships, with r2’s of 0.99 for both rbi and
 strike_outs is obvious and not very informative, as the linear
@@ -997,21 +980,18 @@ Batters
 &lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;/img/bi_batter_adv-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## r2 =  0.7054033
+&lt;pre&gt;&lt;code&gt;## r2 =  0.7054033
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/bi_batter_adv-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## r2 =  0.7736614
+&lt;pre&gt;&lt;code&gt;## r2 =  0.7736614
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/bi_batter_adv-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## r2 =  0.7834183
+&lt;pre&gt;&lt;code&gt;## r2 =  0.7834183
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;It appears the advanced stats for batters may be following a more
 quadratic or exponential relationship then linear, with the linear
@@ -1031,9 +1011,8 @@ Pitchers
 &lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;/img/bi_pitcher_adv-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## r2 =  0.07168485
+&lt;pre&gt;&lt;code&gt;## r2 =  0.07168485
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;The only advanced stat for pitchers in this dataset is their WHIP. A
 clear pattern is hard to determine from this plot, with a potential
@@ -1074,7 +1053,7 @@ weather temperature data contains some wonky data with large negative
 values seen in the dataset. Cleaning up these outliers and 0 valued
 temps and moving to box plots:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;batter_data.OD.decoded$bin_temp &amp;lt;- cut(batter_data.OD.decoded$temp,
+&lt;pre&gt;&lt;code&gt;batter_data.OD.decoded$bin_temp &amp;lt;- cut(batter_data.OD.decoded$temp,
                                        c(25,35,45,55,65,75,85,95,105))
 temp_groups &amp;lt;- group_by(batter_data.OD.decoded,bin_temp)
 batter_data.temp_meds &amp;lt;- summarize(temp_groups,
@@ -1087,7 +1066,6 @@ ggplot(batter_data.OD.decoded, aes(x=bin_temp, y=FD_points)) +
             label = FD_points_median), 
             size = 3, vjust = -1.5)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/bi_batter_temp-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -1145,7 +1123,7 @@ functions code, but the functionality is adequate. I’ll need to sharpen
 my R coding skills and come back to refactor this function at a later
 date.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#Function to parse dataframe wind data and 
+&lt;pre&gt;&lt;code&gt;#Function to parse dataframe wind data and 
 #create spiral plots based on wind angle and FD_points.
 wind_spiral_plot &amp;lt;-function(df){
   wind_speed_bins = c(-Inf,4,6,8,10,12,Inf) 
@@ -1170,7 +1148,6 @@ wind_spiral_plot &amp;lt;-function(df){
       facet_wrap(~wind_speed_group_indx))
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3&gt;
 Batters
@@ -1217,7 +1194,7 @@ properly defined, could prove useful in building a predictive model.&lt;/p&gt;
 &lt;p&gt;Code adapted from
 &lt;a href=&quot;http://stats.stackexchange.com/questions/64927/how-do-i-plot-an-exponential-curve-in-r&quot;&gt;Stackoverflow&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;batter_data.adv_stats_mean.clean = subset(batter_data.adv_stats_mean,
+&lt;pre&gt;&lt;code&gt;batter_data.adv_stats_mean.clean = subset(batter_data.adv_stats_mean,
                                           isnumeric(slg_mean) &amp;amp; slg_mean &amp;gt;
                                             0 &amp;amp; slg_mean &amp;lt; 0.7)
                                             #clean up NA and outlier values
@@ -1251,7 +1228,6 @@ ggplot(result, aes(x = x, y = fitted)) +
   ggtitle(&quot;Batter Fanduel Points vs SLG %&quot;) +
   ylim(c(-1,4))
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/final_slg-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -1274,7 +1250,7 @@ pitchers into fanduel point ranges for use in a predictive model.&lt;/p&gt;
 &lt;p&gt;Circle function from
 &lt;a href=&quot;http://stackoverflow.com/questions/6862742/draw-a-circle-with-ggplot2&quot;&gt;Stackoverflow&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;circleFun &amp;lt;- function(center = c(0,0),diameter = 1, npoints = 100){
+&lt;pre&gt;&lt;code&gt;circleFun &amp;lt;- function(center = c(0,0),diameter = 1, npoints = 100){
     r = diameter / 2
     tt &amp;lt;- seq(0,2*pi,length.out = npoints)
     xx &amp;lt;- center[1] + r * cos(tt)
@@ -1294,7 +1270,6 @@ ggplot(pitcher_data.adv_stats_mean.clean, aes(x=whip_mean, y=FD_points_mean)) +
   ggtitle(&quot;Pitcher Fanduel points vs WHIP&quot;) +
   ylim(c(-5,15))
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/final_whip-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -1316,7 +1291,7 @@ potential wind relationship in predicting batter fanduel points.&lt;/p&gt;
 
 &lt;p&gt;Utilizing the wind_spiral_plot function defined earlier and refining:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wind_spiral_plot_formatted &amp;lt;-function(df){
+&lt;pre&gt;&lt;code&gt;wind_spiral_plot_formatted &amp;lt;-function(df){
   wind_spiral_plot(df) +
   aes(fill=wind_speed_group_indx) + 
   guides(fill=guide_legend(title=&quot;Wind Speed m/s&quot;)) + 
@@ -1332,7 +1307,6 @@ potential wind relationship in predicting batter fanduel points.&lt;/p&gt;
 }
 wind_spiral_plot_formatted(batter_data.OD.decoded)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/final_wind-1.png&quot; style=&quot;display: block; margin: auto;&quot; /&gt;&lt;/p&gt;
 
@@ -1390,8 +1364,8 @@ That will likely be the subject of a future analysis.&lt;/p&gt;
     
       <item>
         <title>The Diagonality of Barcelona</title>
-        <link>http://cole-maclean.github.io//blog/The-Diagonality-of-Barcelona/</link>
-        <guid isPermaLink="true">http://cole-maclean.github.io//blog/The-Diagonality-of-Barcelona/</guid>
+        <link>http://cole-maclean.github.io//blog/The%20Diagonality%20of%20Barcelona/</link>
+        <guid isPermaLink="true">http://cole-maclean.github.io//blog/The%20Diagonality%20of%20Barcelona/</guid>
         <description>&lt;h2&gt;Data Munging and Analyzing Barcelona OSM Data&lt;/h2&gt;
 
 &lt;p&gt;The XML data for the city boundary of Barcelona was downloaded from OSM to clean and transform into a json encodable structure to allow loading into MongoDB, providing storage and artbitrary querying to enable further data analysis of the Barcelona OSM dataset. I chose the Barcelona dataset because I just recently spent a few weeks there and noticed some pretty cool urban planning features of the city (ie. Avinguda Diagonal) that could be cool to explore further.&lt;/p&gt;
@@ -1404,62 +1378,62 @@ That will likely be the subject of a future analysis.&lt;/p&gt;
 
 &lt;h2&gt;Imports and Data prep&lt;/h2&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;xml.etree.cElementTree&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ET&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pprint&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;re&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;codecs&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;heapq&lt;/span&gt;
+&lt;p&gt;```python
+%matplotlib inline
+import xml.etree.cElementTree as ET
+import pprint
+import re
+import codecs
+import json
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+import heapq&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;OSM_FILE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;C:/Users/Cole/Desktop/Udacity/Data Analyst Nano Degree/Project 3/barcelona_spain.osm&quot;&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# Replace this with your osm file&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;SAMPLE_FILE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;C:/Users/Cole/Desktop/Udacity/Data Analyst Nano Degree/Project 3/barcelona_spain_sample.osm&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;osm_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;node&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;way&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;relation&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Yield element if it is the right type of tag
+&lt;p&gt;OSM_FILE = “C:/Users/Cole/Desktop/Udacity/Data Analyst Nano Degree/Project 3/barcelona_spain.osm”  # Replace this with your osm file
+SAMPLE_FILE = “C:/Users/Cole/Desktop/Udacity/Data Analyst Nano Degree/Project 3/barcelona_spain_sample.osm”
+def get_element(osm_file, tags=(‘node’, ‘way’, ‘relation’)):
+    “&quot;”Yield element if it is the right type of tag&lt;/p&gt;
 
-    Reference:
-    http://stackoverflow.com/questions/3095434/inserting-newlines-in-xml-file-generated-via-xml-etree-elementtree-in-python
-    &quot;&quot;&quot;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iterparse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;osm_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;start&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;end&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elem&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;end&#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elem&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SAMPLE_FILE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;wb&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&amp;lt;osm&amp;gt;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;  &#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;c&quot;&gt;# Write every 100th top level element&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OSM_FILE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tostring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;&amp;lt;/osm&amp;gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-
+&lt;pre&gt;&lt;code&gt;Reference:
+http://stackoverflow.com/questions/3095434/inserting-newlines-in-xml-file-generated-via-xml-etree-elementtree-in-python
+&quot;&quot;&quot;
+context = ET.iterparse(osm_file, events=(&#39;start&#39;, &#39;end&#39;))
+_, root = next(context)
+for event, elem in context:
+    if event == &#39;end&#39; and elem.tag in tags:
+        yield elem
+        root.clear()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+
+&lt;p&gt;with open(SAMPLE_FILE, ‘wb’) as output:
+    output.write(‘&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;\n’)
+    output.write(‘&lt;osm&gt;\n  &#39;)&lt;/osm&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Write every 100th top level element
+for i, element in enumerate(get_element(OSM_FILE)):
+    if i % 100 == 0:
+        output.write(ET.tostring(element, encoding=&#39;utf-8&#39;))
+
+output.write(&#39;&amp;lt;/osm&amp;gt;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;```&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Visual Data Inspection&lt;/b&gt;&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#This code attempts to pick out unique data structures from the SAMPLE_FILE to give us examples of &lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;unique_elements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SAMPLE_FILE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;elem_children&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;iter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;elem_children&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elem_children&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unique_elements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;unique_elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elem_children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;c&quot;&gt;#print ET.tostring(element, encoding=&#39;utf-8&#39;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unique_elements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;python
+#This code attempts to pick out unique data structures from the SAMPLE_FILE to give us examples of 
+unique_elements = []
+for i,element in enumerate(get_element(SAMPLE_FILE)):
+    elem_children = [element.tag]
+    for child in element.iter():
+        elem_children.append(child.tag)
+    if elem_children not in unique_elements:
+        unique_elements.append(elem_children)
+        #print ET.tostring(element, encoding=&#39;utf-8&#39;)
+print (len(unique_elements))
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Reviewing the unique elements above yields a few considerations for potential data issues and facts pertinent to the goal of reporting a “degree of diagionality”:&lt;br /&gt;
 1. Being a Spanish City, the non-standard characters common in Spanish names might exist that could cause potential problems 
@@ -1471,190 +1445,187 @@ That will likely be the subject of a future analysis.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Data Shaping&lt;/b&gt;&lt;br /&gt;
 In order to perform a calculation of “diagonality” of a way, we need at least 2 nodes on the way that have lat/lon data. To ensure the way is a valid road to calculate diagionality on, the way must have one of: a valid steet or highway attribute. We will only keep top level data such as id, lat/lon and created data for nodes. To load this data into MongoDB for storage and querying, we need to shape this data into valid JSON, which the below code does.&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#Utility Regular Expressions&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&#39;^([a-z]|_)*$&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;lower_colon&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&#39;^([a-z]|_)*:([a-z]|_)*$&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;problemchars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&#39;[=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;+/&amp;amp;&amp;lt;&amp;gt;;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%#&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$@&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;. &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;n]&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;p&gt;```python
+#Utility Regular Expressions
+lower = re.compile(r’^([a-z]|&lt;em&gt;)*$’)
+lower_colon = re.compile(r’^([a-z]|&lt;/em&gt;)&lt;em&gt;:([a-z]|_)&lt;/em&gt;$’)
+problemchars = re.compile(r’[=+/&amp;amp;&amp;lt;&amp;gt;;&#39;”\?%#$@\,. \t\r\n]’)&lt;/p&gt;
 
-&lt;span class=&quot;c&quot;&gt;#Utility data structures for nested dicts/lists&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;TOP_LEVEL_DATA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;id&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;visible&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;CREATED&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;changeset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;timestamp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;user&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;uid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;POS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;lat&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;lon&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;h1 id=&quot;utility-data-structures-for-nested-dictslists&quot;&gt;Utility data structures for nested dicts/lists&lt;/h1&gt;
+&lt;p&gt;TOP_LEVEL_DATA = [‘id’,’visible’]
+CREATED = [ “version”, “changeset”, “timestamp”, “user”, “uid”]
+POS=[‘lat’,’lon’]&lt;/p&gt;
 
-&lt;span class=&quot;c&quot;&gt;#This function returns a data dictionary by parsing the data from each key of an elements attributes&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;#listed in the data_list argument&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;data_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elem_attribs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_elem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elem_attribs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_elem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_elem&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_list&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_elem&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elem_attribs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()}&lt;/span&gt; 
+&lt;h1 id=&quot;this-function-returns-a-data-dictionary-by-parsing-the-data-from-each-key-of-an-elements-attributes&quot;&gt;This function returns a data dictionary by parsing the data from each key of an elements attributes&lt;/h1&gt;
+&lt;p&gt;#listed in the data_list argument
+def data_dict(elem_attribs,data_list):
+    return {data_elem:elem_attribs[data_elem] for data_elem in data_list if data_elem in elem_attribs.keys()} &lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;extract_top_level_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# this function extract top level data from the elements attributes&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TOP_LEVEL_DATA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;created_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CREATED&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;created_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;created&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;created_dict&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;type&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;
-    
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shape_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;node_refs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;node&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#Checks if is node and extracts required data&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extract_top_level_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;iter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;pos_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_data&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;POS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_data&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#extracts lat/lon data in list and converts to float&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;pos&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos_list&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;way&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#Checks if is way and extracts required data&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extract_top_level_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;iter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;tag&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;problemchars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;k&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#searches for problematic characters and returns None if encountered&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;k&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;addr:street&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#Checks if way has addr:street attribute and assigns the &#39;street&#39; key the streets name, otherwise &#39;highway&#39;&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;street&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;v&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;highway&quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;street&#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;street&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;k&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;nd&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;node_refs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attrib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;ref&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node_refs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;node_refs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node_refs&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;street&#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;node_refs&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#Only return ways that have a addr:street or highway attribute and 2 or more node refs&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+&lt;p&gt;def extract_top_level_data(element): # this function extract top level data from the elements attributes
+    node = data_dict(element.attrib,TOP_LEVEL_DATA)
+    created_dict = data_dict(element.attrib,CREATED)
+    if created_dict:
+        node[‘created’] = created_dict
+    node[‘type’] = element.tag
+    return node&lt;/p&gt;
 
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;process_map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pretty&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;# You do not need to change this file&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;file_out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;{0}.json&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;codecs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iterparse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file_in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shape_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pretty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;fo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dumps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;indent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;fo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dumps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
+&lt;p&gt;def shape_element(element):
+    node_refs = []
+    if element.tag == “node”: #Checks if is node and extracts required data
+       node = extract_top_level_data(element)
+       for child in element.iter():
+            pos_list = [float(child.attrib[pos_data]) for pos_data in POS if pos_data in child.attrib.keys()] #extracts lat/lon data in list and converts to float
+            if pos_list:
+                node[‘pos’] = pos_list
+       return node
+    elif element.tag == “way”: #Checks if is way and extracts required data
+        node = extract_top_level_data(element)
+        for child in element.iter():
+            if child.tag ==’tag’:
+                m = re.search(problemchars,child.attrib[‘k’]) #searches for problematic characters and returns None if encountered
+                if m:
+                    return None
+                if child.attrib[‘k’] ==”addr:street”:#Checks if way has addr:street attribute and assigns the ‘street’ key the streets name, otherwise ‘highway’
+                    node[‘street’] = child.attrib[‘v’]
+                elif “highway” in child.attrib.values() and ‘street’ not in node.keys():
+                    node[‘street’] = child.attrib[‘k’]
+            if child.tag == ‘nd’:
+                node_refs.append(child.attrib[‘ref’])
+        if node_refs:
+            node[“node_refs”] = node_refs
+        else:
+            return None
+        if ‘street’ in node.keys() and len(node[‘node_refs’])&amp;gt;=2: #Only return ways that have a addr:street or highway attribute and 2 or more node refs
+            return node
+        else:
+            return None
+    else:
+        return None&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;process_map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OSM_FILE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;done&quot;&lt;/span&gt;
+&lt;p&gt;def process_map(file_in, pretty = False):
+    # You do not need to change this file
+    file_out = “{0}.json”.format(file_in)
+    data = []
+    with codecs.open(file_out, “w”) as fo:
+        for _, element in ET.iterparse(file_in):
+            el = shape_element(element)
+            if el:
+                data.append(el)
+        if pretty:
+            fo.write(json.dumps(data, indent=2)+”\n”)
+        else:
+            fo.write(json.dumps(data) + “\n”)
+    return data&lt;/p&gt;
+
+&lt;p&gt;process_map(OSM_FILE)
+print “done”
+```&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;done
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;done
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h2&gt;Data Analysis&lt;/h2&gt;
 &lt;p&gt;Now that the data has been cleaned and converted to json, it is able to be stored into a MongoDB database and queried for analysis. Although we’ll use the full dataset that was cleaned and stored in analyzing the “degree of diagonality” of Barcelona, thus not requiring custom MongoDB queries, an example of a query if we were interesting in only ways that are highways would be:&lt;br /&gt;
 query_results = db.barca_OSM.find({“street”:”highway”})&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#Reference: Code from https://gist.github.com/jeromer/2005586&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calculate_initial_compass_bearing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pointB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+&lt;p&gt;```python
+#Reference: Code from https://gist.github.com/jeromer/2005586
+def calculate_initial_compass_bearing(pointA, pointB):
+    “””
     Calculates the bearing between two points.
     The formulae used is the following:
         θ = atan2(sin(Δlong).cos(lat2),
                   cos(lat1).sin(lat2) − sin(lat1).cos(lat2).cos(Δlong))
     :Parameters:
-      - `pointA: The tuple representing the latitude/longitude for the
+      - &lt;code&gt;pointA: The tuple representing the latitude/longitude for the
         first point. Latitude and longitude must be in decimal degrees
-      - `pointB: The tuple representing the latitude/longitude for the
+      - &lt;/code&gt;pointB: The tuple representing the latitude/longitude for the
         second point. Latitude and longitude must be in decimal degrees
     :Returns:
       The bearing in degrees
     :Returns Type:
       float
-    &quot;&quot;&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;TypeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Only tuples are supported as arguments&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    “””
+    if (type(pointA) != tuple) or (type(pointB) != tuple):
+        raise TypeError(“Only tuples are supported as arguments”)&lt;/p&gt;
 
-    &lt;span class=&quot;n&quot;&gt;lat1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radians&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;lat2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radians&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;pre&gt;&lt;code&gt;lat1 = math.radians(pointA[0])
+lat2 = math.radians(pointB[0])
 
-    &lt;span class=&quot;n&quot;&gt;diffLong&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radians&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pointA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+diffLong = math.radians(pointB[1] - pointA[1])
 
-    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;diffLong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lat2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lat1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lat2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lat1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lat2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;diffLong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+x = math.sin(diffLong) * math.cos(lat2)
+y = math.cos(lat1) * math.sin(lat2) - (math.sin(lat1)
+        * math.cos(lat2) * math.cos(diffLong))
 
-    &lt;span class=&quot;n&quot;&gt;initial_bearing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atan2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+initial_bearing = math.atan2(x, y)
 
-    &lt;span class=&quot;c&quot;&gt;# Now we have the initial bearing but math.atan2 return values&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;# from -180° to + 180° which is not what we want for a compass bearing&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;# The solution is to normalize the initial bearing as shown below&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;initial_bearing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;degrees&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initial_bearing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;compass_bearing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initial_bearing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;360&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;360&lt;/span&gt;
+# Now we have the initial bearing but math.atan2 return values
+# from -180° to + 180° which is not what we want for a compass bearing
+# The solution is to normalize the initial bearing as shown below
+initial_bearing = math.degrees(initial_bearing)
+compass_bearing = (initial_bearing + 360) % 360
 
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;compass_bearing&lt;/span&gt;
+return compass_bearing ```
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;degree_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C:/Users/Cole/Desktop/Udacity/Data Analyst Nano Degree/Project 3/barcelona_spain.osm.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;node_pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;datum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;id&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;datum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;pos&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;datum&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;type&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;node&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;indx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;way_data&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;way_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;type&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;way&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;node_1_pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node_pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;way_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;node_refs&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;node_2_pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node_pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;way_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;node_refs&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;degree_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;calculate_initial_compass_bearing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node_1_pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node_2_pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;KeyError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;degree_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-        
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;```python
+degree_data = []
+with open(“C:/Users/Cole/Desktop/Udacity/Data Analyst Nano Degree/Project 3/barcelona_spain.osm.json”,”r”) as data_file:
+    data = json.load(data_file)
+node_pos = {datum[‘id’]:datum[‘pos’] for i,datum in enumerate(data) if datum[‘type’]==’node’}
+for indx,way_data in enumerate(data):
+    if way_data[‘type’] == ‘way’:
+        try:
+            node_1_pos = tuple(node_pos[way_data[‘node_refs’][0]])
+            node_2_pos = tuple(node_pos[way_data[‘node_refs’][1]])
+            degree_data.append(calculate_initial_compass_bearing(node_1_pos,node_2_pos))
+        except KeyError:
+            pass
+print degree_data[3:8]&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[267.85381820650105, 136.77552225283853, 225.17064639252413, 225.77167855473186, 169.69113420727763]
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[267.85381820650105, 136.77552225283853, 225.17064639252413, 225.77167855473186, 169.69113420727763]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h2&gt;Data Visualization&lt;/h2&gt;
 &lt;p&gt;With the street angle data, we can now generate a circular historgram plot across the street angles and visualize the most dominate directions of Barcelona streets.
 Code adapted from &lt;a href=&quot;http://stackoverflow.com/questions/22562364/circular-histogram-for-python&quot;&gt;SO Circular Histogram for Python&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dpi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;36&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edges&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;histogram&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;degree_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;bottom&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;
+&lt;p&gt;```python
+fig = plt.figure(figsize=(10, 12), dpi=100)
+N = 36
+hist, edges = np.histogram(degree_data, bins=N)
+bottom = 8&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;edges&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;radii&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hist&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;
+&lt;p&gt;theta = np.delete(edges,-1)
+radii = hist
+width = (2*np.pi) / N&lt;/p&gt;
 
-&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;111&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;polar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;bars&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radii&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bottom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;p&gt;ax = plt.subplot(111, polar=True)
+bars = ax.bar(theta, radii, width=width, bottom=bottom)&lt;/p&gt;
 
-&lt;span class=&quot;c&quot;&gt;# Use custom colors and opacity&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;radii&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_facecolor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_alpha&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;h1 id=&quot;use-custom-colors-and-opacity&quot;&gt;Use custom colors and opacity&lt;/h1&gt;
+&lt;p&gt;for r, bar in zip(radii, bars):
+    bar.set_facecolor(plt.cm.jet(r / 10.))
+    bar.set_alpha(0.8)
+plt.show()
+```&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/output_12_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
 &lt;h2&gt;Final Analysis&lt;/h2&gt;
 &lt;p&gt;It appears there are 3 dominate street angles at around 135o, 255o and 5o. Using this visualization as a guide, we could develop a measure of diagonality as defined by taking 1 minus the count of the 2 most dominate angle’s and dividing that by the total count of the dataset. A perfectly non-diagonal city would result in a diagonality measure of (1-Count(dominant_angles))/(total_angles) = 0 where the 2 dominant angles are the only angles = total angles&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;dominant_angles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;heapq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nlargest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;total_angles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;barcelona degree of diagonality =&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dominant_angles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;total_angles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;python
+dominant_angles = np.sum(heapq.nlargest(2, hist))
+total_angles = np.sum(hist)
+print &quot;barcelona degree of diagonality =&quot; + str(1-(float(dominant_angles)/float(total_angles)))
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;barcelona degree of diagonality =0.895038509762
+&lt;pre&gt;&lt;code&gt;barcelona degree of diagonality =0.895038509762
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h2&gt;Final Conclusions&lt;/h2&gt;
 &lt;p&gt;The “degree of diagonality” of Barcelona using the above measure is 0.895. I intuitivley guess this is a relatively (globally speaking) high degree of diagonality, but other cities could be run through the above methodology and compared. I had alot of fun with the above analysis, and can think of many further areas to continue developing and errors to fix, but I have a Nano Degree to finish!&lt;/p&gt;
