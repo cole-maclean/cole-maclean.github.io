@@ -11,6 +11,9 @@ I'm Cole MacLean, a Chemical Engineer from Calgary, Alberta, Canada. I recently 
 
 The home page has three data visualizations, representing what I'm working on, what I'm learning and what I'm reading to give an overview of where I'm spending my energy, what topics interest me, and how that is changing over time. The first visualization depicts github commits for the projects I work on with memos that have been tagged with themes that describe the work done in each commit. The second visualization outlines my historical and planned education using online resources to compliment the courses I take from the UPC Master's program. I also plan to compete in some [kaggle](https://www.kaggle.com/) competitions to help gauge my developing skillset. The visualization includes a linegraph outlining my overall kaggle rank overtime along with links to blog posts outlining the techniques I developed and used in the competition. The third visualization uses the same design as the first to depict tagged themes describing the topics from articles, images and videos across the web that I save to [Pocket.](https://getpocket.com) The source code for these visualizations can be found [here](https://github.com/cole-maclean/cole-maclean.github.io)
 
-With an anticipated graduation date of August 2017, I'm excited to see where this next year takes me and am itching to start learning and building cool projects using Data Science and Artificial Intelligence.
+With an anticipated graduation date of July 2017, I'm excited to see where this next year takes me and am itching to start learning and building cool projects using Data Science and Artificial Intelligence. I hope that others find something interesting in the projects I build!
+
+Although I still have over half a year left in my program, I'm always interested in hearing about what problems companies are tackling with AI. My resume can be found [here](/blog/files/Resume-Cole MacLean-Anonymized.pdf
+), please feel free to reach out to discuss potential opportunities.
 
 -Cole MacLean

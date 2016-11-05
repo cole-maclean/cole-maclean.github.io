@@ -1,4 +1,5 @@
 var max_ticks = 12
+
 function initial_draw(data,svg,resolution,resolution_dict){
 
 	var resolved_data = data[resolution] //data is a list of [0-timestamp,1-legend,2-tag,3-count] tuples summarized and keyed by hour, day, month and year
@@ -38,6 +39,16 @@ function draw_tag_viz(resolved_data,svg,xScale){
 	  	}
 	})
 
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+        return ("<strong>Tag:</strong> <span style='color:white'>" + d[2] + 
+        "</br>Count:" + d[3] + 
+        "</span>")
+      })
+
+    svg.call(tip);
     //make xaxis tick intervals responsive by removing every tick_removal_interval tick from the graphic to avoid text bunching together
     var tick_count = svg.select(".x.axis").selectAll(".tick")[0].length;
     var tick_remove_count = Math.max(1,(tick_count - max_ticks));
@@ -119,6 +130,8 @@ function draw_tag_viz(resolved_data,svg,xScale){
 	var text = g.selectAll("text")
 		.data(truncated_data)
 		.enter()
+        .append("svg:a")
+        .attr("xlink:href", function(d){ return "http://cole-maclean.github.io/tags/"+d[2].toLowerCase()})
 		.append("text");
 
 	circles
@@ -128,7 +141,9 @@ function draw_tag_viz(resolved_data,svg,xScale){
 		.style("stroke", function(d) {return legend_color(legendScale(d[1]));})
         .style("stroke-width",2)
         .style("stroke-opacity",0.3)
-		.style("fill", function(d) {return tag_color(d[2]);});
+		.style("fill", function(d) {return tag_color(d[2]);})
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
 
 
 	text
@@ -142,21 +157,25 @@ function draw_tag_viz(resolved_data,svg,xScale){
 	var legend_circs = g.selectAll("legend_circs")
 		.data(legend)
 		.enter()
+        .append("svg:a")
+        .attr("xlink:href", function(d){ return "http://cole-maclean.github.io/blog/"+d.key})
 		.append("circle")
 		.attr("cx", function(d,i) {return i*margin.legend;})
-		.attr("cy", yScale.domain().length*margin.tag + margin.tag*2)
+		.attr("cy", yScale.domain().length*margin.tag + margin.tag-13)
 		.attr("r", 10)
 		.style("stroke", function(d) {return legend_color(legendScale(d.key));})
         .style("stroke-opacity",0.3)
         .style("stroke-width",3)
-		.style("fill","none");
+		.style("fill","transparent");
 
 	var legend_text = g.selectAll("legend_text")
 		.data(legend)
 		.enter()
+        .append("svg:a")
+        .attr("xlink:href", function(d){ return "http://cole-maclean.github.io/blog/"+d.key})
 		.append("text")
 		.attr("x", function(d,i) {return i*margin.legend + 15;})
-		.attr("y", yScale.domain().length*margin.tag + margin.tag*2 + 5)
+		.attr("y", yScale.domain().length*margin.tag + margin.tag-8)
 		.text(function(d){return d.key;});
 }
 

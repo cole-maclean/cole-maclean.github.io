@@ -1,4 +1,4 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; font-family: "Open Sans",Helvetica,Arial,"Microsoft YaHei",sans-serif;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, pre,p a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; font-family: "Open Sans",Helvetica,Arial,"Microsoft YaHei",sans-serif;}
 body{margin:0; height: 100%; padding:0;}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
 audio,canvas,progress,video{display:inline-block;*display:inline;*zoom:1;vertical-align:baseline}
@@ -17,7 +17,7 @@ h4{font-size:1em;line-height:1.5em;margin-top:1.5em;margin-bottom:1.5em}
 h5{font-size:0.83em;line-height:1.80723em;margin-top:1.80723em;margin-bottom:1.80723em}
 h6{font-size:0.67em;line-height:2.23881em;margin-top:2.23881em;margin-bottom:2.23881em}
 mark{background:#ff0;color:#000}
-p,pre{margin:0 0 15px 0; font-weight: normal;}
+p{margin:0 0 15px 0; font-weight: normal;}
 small{font-size:80%}
 sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
 sup{top:-0.5em}
@@ -30,7 +30,6 @@ img{border:0;-ms-interpolation-mode:bicubic}
 svg:not(:root){overflow:hidden}
 figure{margin:1.5em 40px}
 hr{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;height:0}
-pre{overflow:auto}
 code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}
 
 table{border-collapse:collapse;border-spacing:0}
@@ -75,7 +74,6 @@ blockquote{font-size:1.25em;line-height:1.25;padding:1% 2%}
 .post figure{margin:3rem 0}
 .post figure figcaption{text-align:center;font-size:.938em;font-style:italic;color:#5e5e5e}
 .post figure img{margin:0 auto;display:block}.post img{margin-bottom:2rem}
-.post .highlight{clear:both;margin-bottom:2rem}
 .post .dropcap{color:#2e8b57;margin-right:.45rem}
 .post .featuredImage{position:relative;margin-top:2rem}
 .post .featuredImage img{margin-bottom:0}

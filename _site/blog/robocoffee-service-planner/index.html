@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" lang="zh-CN">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" lang="zh-CN">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US" class="js">
+<!--<![endif]-->
+  
+
+	
+	    
+	        
+	    
+	        
+	    
+	        
+	    
+	    
+	
+
+	
+	    
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	                
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	        
+	            
+	            
+	        
+	    
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	                
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	        
+	            
+	            
+	        
+	    
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	                
+	            
+	        
+	            
+	        
+	        
+	            
+	            
+	        
+	    
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	                
+	            
+	        
+	        
+	            
+	            
+	        
+	    
+	
+<head>
+	<meta charset="utf-8">
+	<title>Robocoffee Service Planner  - A mini webapp with d3.js and flask | Online Profile</title>
+	<meta name="description" content=", python, d3.js, flask, Agent Planning, IntroductionAs part of a school project, I was tasked with building a linear planner for creating the optimal routing plan for a robot capable of making and ...">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-Frame-Options" content="sameorigin">
+	<!-- CSS -->
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel='stylesheet' id='divi-style-css'  href="/css/style.css" type='text/css' media='all' />
+	<link rel="stylesheet" href="/css/post.style.css">
+	<link rel="stylesheet" href="/css/highlight.css">
+
+	<script type='text/javascript' src="/js/jquery.js"></script>
+	<script type='text/javascript' src="/js/soundmanager2-nodebug-jsmin.js"></script>
+
+	<!--Favicon-->
+	<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	
+	<link href="/favicon.ico" mce_href="favicon.ico" rel="bookmark" type="image/x-icon" /> 
+	<link href="/favicon.ico" mce_href="favicon.ico" rel="icon" type="image/x-icon" /> 
+	<link href="/favicon.ico" mce_href="favicon.ico" rel="shortcut icon" type="image/x-icon" /> 
+	<!-- Canonical -->
+	<link rel="canonical" href="http://cole-maclean.github.io//blog/robocoffee-service-planner/">
+
+	<!-- RSS -->
+	<link rel="alternate" type="application/atom+xml" title="Online Profile" href="http://cole-maclean.github.io//feed.xml" />
+
+	<!-- Font Awesome -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+	
+
+	<!-- KaTeX -->
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"></script>
+	
+
+	<!-- Google Analytics -->
+	
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-71787228-1', 'auto');
+	ga('send', 'pageview');
+	</script>
+	
+
+	<script type="text/javascript">
+    var host = "http://cole-maclean.github.io/";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+    </script>
+     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-71787228-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+ 
+</head>
+
+	<body class="home blog et_pb_button_helper_class home-posts et_fixed_nav et_show_nav et_cover_background et_pb_gutter windows et_pb_gutters3 et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_pb_footer_columns4 et_header_style_left et_right_sidebar chrome">
+		<div id="page-container">
+    		<header id="main-header" data-height-onload="66">
+	<div class="container clearfix et_menu_container">
+		<div class="logo_container">
+			<span class="logo_helper"></span>
+			<a href="/">
+				<!--img src="http://blog.ibireme.com/wp-content/uploads/2015/05/logo1.png" alt="Garan no dou" id="logo" data-height-percentage="54" /-->
+				Online Profile - Cole MacLean
+			</a>
+		</div>
+		<div id="et-top-navigation" data-height="66" data-fixed-height="40">
+			<nav id="top-menu-nav">
+				<ul id="top-menu" class="nav">
+					<li>
+						<a class="page-link" href="/">
+							Home
+						</a>
+					</li>
+					
+					
+					
+					
+					<li>
+						<a class="page-link" href="/projects/">
+							Projects
+						</a>
+					</li>
+					
+					
+					
+					<li>
+						<a class="page-link" href="/About/">
+							About
+						</a>
+					</li>
+					
+					
+					
+					
+					
+					<li>
+						<a class="page-link" href="/Archives/">
+							Archive
+						</a>
+					</li>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<!-- Social icons from Font Awesome, if enabled -->
+					<li>
+						<a class="page-link" href="">Find Me</a>
+						<ul class="children">
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/cole-maclean" title="Follow on GitHub">
+		<i class="fa fa-fw fa-github"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://www.linkedin.com/in/macleancole" title="Follow on LinkedIn">
+		<i class="fa fa-fw fa-linkedin"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://twitter.com/ponderingHplus" title="Follow on Twitter">
+		<i class="fa fa-fw fa-twitter"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+<li>
+	<a href="https://www.kaggle.com/colemaclean" title="">
+		<i>kaggle</i>
+	</a>
+</li>
+
+
+
+<li>
+	<a href="mailto:maclean.cole@gmail.com" title="Email">
+		<i class="fa fa-fw fa-envelope"></i>
+	</a>
+</li>
+
+</ul>
+					</li>
+					
+				</ul>
+			</nav>
+
+			<div id="et_mobile_nav_menu">
+				<div class="mobile_nav closed">
+					<span class="select_page"></span>
+					<span class="mobile_menu_bar"></span>
+				</div>
+			</div>				
+		</div> <!-- #et-top-navigation -->
+	</div> <!-- .container -->
+	<div class="et_search_outer">
+		<div class="container et_search_form_container">
+			<form role="search" method="get" class="et-search-form" action="http://cole-maclean.github.io/">
+			<input type="search" class="et-search-field" placeholder="搜索 &hellip;" value="" name="s" title="搜索：" /></form>
+			<span class="et_close_search_field"></span>
+		</div>
+	</div>
+</header> <!-- #main-header -->
+
+    		<div id="et-main-area">
+      			
+
+	
+	    
+	        
+	    
+	        
+	    
+	        
+	    
+	    
+	
+
+	
+	    
+	    
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	                
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	        
+	            
+	            
+	        
+	    
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	                
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	        
+	            
+	            
+	        
+	    
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	                
+	            
+	        
+	            
+	        
+	        
+	            
+	            
+	        
+	    
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	        
+	            
+	                
+	            
+	        
+	        
+	            
+	            
+	        
+	    
+	
+
+<article >
+  <header style="background-image: url('/')">
+
+<!--article  >
+  <div style="background-image: url('/')"/>
+  <header style="background-image: url('')"-->
+    <h1 class="title">Robocoffee Service Planner  - A mini webapp with d3.js and flask</h1>
+    <p id="subtitletrans" class="subtitlecontainer">
+    <a class="subtitle">2016-11-05</a> | <a class = "subtittle" href=>HN</a>
+	 <a class="subtitle"></a> <a class="subtitle">  <i class="fa fa-tags"></i>: <a href="/tags/python/">python</a>, <a href="/tags/d3js/">d3.js</a>, <a href="/tags/flask/">flask</a>, <a href="/tags/agent-planning/">Agent Planning</a></a>
+    </p>
+  </header>
+  <section class="post-content">
+  <h2>Introduction</h2>
+
+<p>As part of a school project, I was tasked with building a linear planner for creating the optimal routing plan for a robot capable of making and serving coffee to office employees&#39; requests. The system needed to be able to receive as input any arbitrary 6x6 square-grid office building configuration with coffee machines and coffee requests, and propose an optimal plan from that initial state. This requirement of dynamic user input pushed the project outside my usual tech stack of static websites generated from flat-files rendered by d3.js visualizations. This project required a dynamic interface that allowed for server-client communication, so I began researching options that could accomplish this.</p>
+
+<p><b>The Flask-d3-PythonAnywhere Stack</b><br>
+Front-end engineering is not my domain of expertise, and given the hard deadline of this project, I needed to utilize tools I was already comfortable with. Researching methods of combining python and d3.js to make dynamic webapps led me to <a href="http://flask.theoryandpractice.org/">this</a> demo, which provides a skeleton for developing such apps. I had heard of <a href="http://flask.pocoo.org/">flask</a> before, but never actually used it. As a first time user, I can vouch for the positive reviews this python package receives. It took very little code to get a local webapp off the ground, and integration with d3 is a breeze once you figure out that d3&#39;s d3.json method can make data requests directly to the webserver.</p>
+
+<p>Launching a local instance of the app takes a single line of python code, python -m http.server, but deploying to the World Wide Web would take a bit more effort. After a couple failed attempts to understand the deployment process for both Google App Engine and Heroku, I stumbled upon <a href="https://www.reddit.com/r/flask/comments/2321oc/easiest_and_fastest_way_to_host_flask_python/">this</a> reddit thread. The top comment suggests <a href="https://www.pythonanywhere.com/">PythonAnywhere</a>, which claims that users can get a python website in minutes. For me, the whole process took under 30 minutes, but now that I know the interface, the next one will take under 1. The service provides the exact functionality I was looking for, making web-connected deployment nearly as simple as starting a local instance. Open a terminal, run the code, launch the app. Git functionality is also included, so the entire production environment pipeline feels exactly the same as local development.</p>
+
+<p>The final product can be viewed <a href="http://ponderinghydrogen.pythonanywhere.com/">here</a></p>
+
+<p>This is my first mini-app using the Flask-d3-PythonAnywhere stack, but the ability to allow dynamic user interaction opens up a whole new level of data visualization projects beginning to percolate in the back of my head. I&#39;ll let you know when I&#39;ve finished the next one.</p>
+
+<p>The rest of this post outlines the details of the Robocoffee Service Planner implementation.</p>
+
+<h2>Robocoffee Service Planner</h2>
+
+<p>A discrete state planning exercise is presented to utilize and test the linear planning with a stack of goals (<a href="http://www.cs.cmu.edu/%7Emmv/planning/readings/strips.pdf">PRISM</a>) algorithm for agent planning.  </p>
+
+<p>A mobile robotic agent capable of making and serving coffee to offices within a 2D office building is tasked with efficiently serving the requested coffee petitions in the least amount of steps to reduce office worker disturbances. The office building is modelled as a 6x6 square grid of 36 offices, and the steps between 2 offices is defined as their manhattan distance. The agent is fed information about coffee machine and petition capacities and office locations, and is required to build a daily service plan to efficiently fulfill the petitions given the new office configuration.</p>
+
+<p>The agent is a linear planner with 3 operators: Move, Make and Serve. The preconditions, additions and deletions of each operator in the planning algorithm are listed below.</p>
+
+<p>Make(o,n): the robot makes n cups of coffee in the machine located at office o
+<ul>
+ <li>Preconditions: robot-location(o), robot-free, machine(o,n)</li>
+ <li>Add: robot-loaded(n)</li>
+ <li>Delete: robot-free</li>
+</ul></p>
+
+<p>Move(o1,o2): the robot moves from o1 to o2
+<ul>
+    <li>Preconditions: robot-location(o1), steps(x)</li>
+    <li>Add: robot-location(o2), steps(x+distance(o1,o2))</li>
+    <li>Delete: robot-location(o1), steps(x)</li>
+</ul></p>
+
+<p>Serve(o,n): the robot delivers n cups of coffee to office o
+<ul>
+<li>Preconditions: robot-location(o), robot-loaded(n), petition(o,n)</li>
+<li>Add: served(o), robot-free</li>
+<li>Delete: petition(o,n), robot-loaded(n)</li>
+</ul></p>
+
+<p>A linear planner using these operators and some simple search heuristics has been implemented and can be tested <a href="http://ponderinghydrogen.pythonanywhere.com/">here</a>
+<img src="/img/example_state.PNG" alt=""></p>
+
+<h2>Algorithm Implementation</h2>
+
+<p>The linear planner is implementated as a class object with 3 main methods that perform: Action search space traversal, Action filtering hueristics and Action execution.<br>
+<b>Initialization</b><br>
+The Planner class is initializated with the initial state of the form<br>
+                              {&#39;robot-location&#39;: o, &#39;steps&#39;: 0,<br>
+                              &#39;petitions&#39;: {office:petition_count},<br>
+                              &#39;robot-free&#39;: True, &#39;robot-loaded&#39;: 0,<br>
+                              &#39;machines&#39;: {office:capacity},<br>
+                              &#39;served&#39;: []}</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">Planner</span>
+</code></pre></div><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_planner</span> <span class="o">=</span> <span class="n">Planner</span><span class="o">.</span><span class="n">Planner</span><span class="p">({</span><span class="s">'robot-location'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'steps'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                              <span class="s">'petitions'</span><span class="p">:</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">24</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+                              <span class="s">'robot-free'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">'robot-loaded'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                              <span class="s">'machines'</span><span class="p">:</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">22</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+                              <span class="s">'served'</span><span class="p">:</span> <span class="p">[]},</span><span class="mi">36</span><span class="p">)</span>
+</code></pre></div>
+<p><b>Search Space Traversal</b><br>
+The first method, possible_actions, checks the current state compared to operator preconditions and builds a list of all legal actions.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">acts</span> <span class="o">=</span> <span class="n">my_planner</span><span class="o">.</span><span class="n">possible_actions</span><span class="p">()</span>
+<span class="n">acts</span>
+</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">[['move', [3, 0]],
+ ['move', [3, 1]],
+ ['move', [3, 2]],
+ ['move', [3, 4]],
+ ['move', [3, 5]],
+ ['move', [3, 6]],
+ ['move', [3, 7]],
+ ['move', [3, 8]],
+ ['move', [3, 9]],
+ ['move', [3, 10]],
+ ['move', [3, 11]],
+ ['move', [3, 12]],
+ ['move', [3, 13]],
+ ['move', [3, 14]],
+ ['move', [3, 15]],
+ ['move', [3, 16]],
+ ['move', [3, 17]],
+ ['move', [3, 18]],
+ ['move', [3, 19]],
+ ['move', [3, 20]],
+ ['move', [3, 21]],
+ ['move', [3, 22]],
+ ['move', [3, 23]],
+ ['move', [3, 24]],
+ ['move', [3, 25]],
+ ['move', [3, 26]],
+ ['move', [3, 27]],
+ ['move', [3, 28]],
+ ['move', [3, 29]],
+ ['move', [3, 30]],
+ ['move', [3, 31]],
+ ['move', [3, 32]],
+ ['move', [3, 33]],
+ ['move', [3, 34]],
+ ['move', [3, 35]],
+ ['make', [3, 1]],
+ ['make', [3, 2]],
+ ['make', [3, 3]]]
+</code></pre></div>
+<p></br></p>
+
+<p><b>Search Space Filtering Heuristics</b><br>
+The method, select_action, uses 4 simple rules to select the optimal action from the list of all possible actions.<br>
+1.) If a serve action exists in the action_list, then perform the serve action<br>
+2.) If robot is loaded with a petitioned amount of cups, perform move action to the minimum manhatten distance to the petitioning offices<br>
+3.) If a make action is in the list, and #ofcups equals an existing petitioned #ofcups, then perform the make action that can serve the closest petition<br>
+4.) If no other actions than move to a machine exist, move to the closest machine capable of making #ofcups &gt; or = an existing petitioned #ofcups  </p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_planner</span><span class="o">.</span><span class="n">select_action</span><span class="p">(</span><span class="n">acts</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">['make', [3, 1]]
+</code></pre></div>
+<p></br></p>
+
+<p><b>Action Execution</b><br>
+The method, perform_step, executes the selected action and stores the resulting new state in the planner.plan property. A helper function, build_plan, iteratively performs the perform_step method until the goal_state is satisfied, and returns the full plan with intermediate states and actions for the agent.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_planner</span><span class="o">.</span><span class="n">build_plan</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">[
+{'action': 'initialize',
+  'state': {'machines': {3: 3, 7: 1, 20: 2, 22: 1, 30: 2},
+   'petitions': {2: 1, 10: 3, 11: 1, 12: 2, 24: 1},
+   'robot-free': True,
+   'robot-loaded': 0,
+   'robot-location': 3,
+   'served': [],
+   'steps': 0}},
+ {'action': ['make', [3, 1]],
+  'state': {'machines': {3: 3, 7: 1, 20: 2, 22: 1, 30: 2},
+   'petitions': {2: 1, 10: 3, 11: 1, 12: 2, 24: 1},
+   'robot-free': False,
+   'robot-loaded': 1,
+   'robot-location': 3,
+   'served': [],
+   'steps': 0}},
+ {'action': ['move', [3, 2]],
+  'state': {'machines': {3: 3, 7: 1, 20: 2, 22: 1, 30: 2},
+   'petitions': {2: 1, 10: 3, 11: 1, 12: 2, 24: 1},
+   'robot-free': False,
+   'robot-loaded': 1,
+   'robot-location': 2,
+   'served': [],
+   'steps': 1}},
+ ]
+</code></pre></div>
+<h2>Final Results</h2>  
+
+<p>Using a simple linear planner with stack of goals and simple search space heuristics, an efficient agent for coffee service planning can be implemented. Through many different office configurations, the implemented agent performs logically and efficiently in collecting and serving petitions. </p>
+
+<h2>Limitations</h2>
+
+<p>The described linear planner implementation does not gaurentee maximally optimal service plans. Although the 4 rules for search space filtering capture nearly all situations for optimal action selection, there does exist situations where the agent will perform sub-optimally. These cases arise when a coffee machine that can serve a petition is closer to that petition, to another capable machine closer to the agent, causing the agent to unnecessarily. An example configuration of this is presented here.</p>
+
+<p><img src="/img/limit_example1.PNG" alt=""></p>
+
+<p>In this example, the optimal route is for the agent to use the 2 cup capacity machine to serve the single cup petition, and carry-on towards the 3 cup capacity machine to serve the 2 cup petition. The above implementation incorrectly utilize the 2 cup capacity machine to serve both petitions, due to search heuristic #4 move to closest machine capable of serving an existing petition. </p>
+
+<p><img src="/img/limit_example2.PNG" alt=""></p>
+
+<p>Future work to improve the above implementation and correct this suboptimal behavior would be to implement full search tree traversal and selection of the globally optimal plan. However, the advantages of the above implementation is its superior ability to scale to larger input configuration, compared to the computationally expensive method of a full search tree traversal implementation. </p>
+
+<h2>Execution Instructions</h2>
+
+<p>A graphical interface for the described agent can be found <a href="http://ponderinghydrogen.pythonanywhere.com/">here</a> To initialize the agent, fill in the desired coffee machine capacities and petitions in the correct offices and input the initial office of the robot in the &#39;robot_cell&#39; input box. For example, if office 16 has a machine with capacity of 3 cups, and office 23 has a petition for 2 cups, input 3 in the &#39;machines&#39; input box of office 16, and 2 in the &#39;petitions&#39; input box of office 23. If the agent starts in office 2, enter 2 in the &#39;robot_cell&#39; input box. Once configured, select the &#39;Submit&#39; button.<br>
+You will be redirected to a graphical simulation of the agents plan, that can be stepped through using the &#39;Plan Step&#39; slider to visualize plan execution.</p>
+
+  </section>
+  
+</article>
+
+<!-- Post navigation -->
+
+
+<!-- Disqus -->
+
+
+    		</div> <!-- #et-main-area -->
+		</div> <!-- #page-container -->
+		
+<script src="/js/katex_init.js"></script>
+
+
+
+<footer id="page-footer-trans" class="page-footer">
+	<!--<p class="text"><a href="http://cole-maclean.github.io/">Cole MacLean</a>
+</p>-->
+	<p class="text">Hosted by <a href="https://github.com">GitHub</a>. Theme created by <a href="https://github.com/fengzhichu/fengzhichu-theme/tree/gh-pages">枫之楚</a></p>
+</footer>
+
+
+    
+<!-- WP Audio player plugin v1.9.3 - https://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556/ -->
+    <script type="text/javascript">
+        soundManager.useFlashBlock = true; // optional - if used, required flashblock.css
+        soundManager.url = '/plugins/soundmanager2.swf';
+        function play_mp3(flg, ids, mp3url, volume, loops)
+        {
+            //Check the file URL parameter value
+            var pieces = mp3url.split("|");
+            if (pieces.length > 1) {//We have got an .ogg file too
+                mp3file = pieces[0];
+                oggfile = pieces[1];
+                //set the file URL to be an array with the mp3 and ogg file
+                mp3url = new Array(mp3file, oggfile);
+            }
+
+            soundManager.createSound({
+                id: 'btnplay_' + ids,
+                volume: volume,
+                url: mp3url
+            });
+
+            if (flg == 'play') {
+                    soundManager.play('btnplay_' + ids, {
+                    onfinish: function() {
+                        if (loops == 'true') {
+                            loopSound('btnplay_' + ids);
+                        }
+                        else {
+                            document.getElementById('btnplay_' + ids).style.display = 'inline';
+                            document.getElementById('btnstop_' + ids).style.display = 'none';
+                        }
+                    }
+                });
+            }
+            else if (flg == 'stop') {
+    //soundManager.stop('btnplay_'+ids);
+                soundManager.pause('btnplay_' + ids);
+            }
+        }
+        function show_hide(flag, ids)
+        {
+            if (flag == 'play') {
+                document.getElementById('btnplay_' + ids).style.display = 'none';
+                document.getElementById('btnstop_' + ids).style.display = 'inline';
+            }
+            else if (flag == 'stop') {
+                document.getElementById('btnplay_' + ids).style.display = 'inline';
+                document.getElementById('btnstop_' + ids).style.display = 'none';
+            }
+        }
+        function loopSound(soundID)
+        {
+            window.setTimeout(function() {
+                soundManager.play(soundID, {onfinish: function() {
+                        loopSound(soundID);
+                    }});
+            }, 1);
+        }
+        function stop_all_tracks()
+        {
+            soundManager.stopAll();
+            var inputs = document.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].id.indexOf("btnplay_") == 0) {
+                    inputs[i].style.display = 'inline';//Toggle the play button
+                }
+                if (inputs[i].id.indexOf("btnstop_") == 0) {
+                    inputs[i].style.display = 'none';//Hide the stop button
+                }
+            }
+        }
+    </script>
+    <script type='text/javascript' src="/js/frontend-builder-global-functions.js"></script>
+<script type='text/javascript' src="/js/custom.js"></script>
+<script type='text/javascript' src="/js/jquery.fitvids.js"></script>
+<script type='text/javascript' src="/js/waypoints.min.js"></script>
+<script type='text/javascript' src="/js/jquery.magnific-popup.js"></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var et_custom = {"ajaxurl":"http:\/\/blog.ibireme.com\/wp-admin\/admin-ajax.php","images_uri":"http:\/\/blog.ibireme.com\/wp-content\/themes\/Divi\/images","builder_images_uri":"http:\/\/blog.ibireme.com\/wp-content\/themes\/Divi\/includes\/builder\/images","et_load_nonce":"ae39988568","subscription_failed":"Please, check the fields below to make sure you entered the correct information.","fill":"Fill","field":"field","invalid":"Invalid email","captcha":"Captcha","prev":"Prev","previous":"\u4e0a\u4e00\u9875","next":"\u4e0b\u4e00\u9875","is_builder_plugin_used":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src="/js/frontend-builder-scripts.js"></script>
+  </body>
+</html>

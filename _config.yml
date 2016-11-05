@@ -16,8 +16,8 @@ theme:
   # Header and footer text
   header_text:
 
-  header_text_feature_image: img/blog_img.jpg
-  place_holder_image: img/blog_img.jpg
+  header_text_feature_image: img/blog_img_compressed.jpg
+  place_holder_image: img/blog_img_compressed.jpg
   footer_text: >
    <a href="http://cole-maclean.github.io/">Cole MacLean</a>
   # Icons
@@ -76,9 +76,12 @@ sechby:
   tag:   #with
 
 # BUILD SETTINGS
-pygments: true
-markdown: kramdown
-highlighter: null
+markdown: redcarpet
+highlighter: rouge
+
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+
 sass:
   sass_dir: _sass
   style: :compressed

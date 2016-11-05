@@ -2,7 +2,7 @@
 layout: post
 title: The Diagonality of Barcelona
 category: projects
-tags: [data-munging, data-analysis, barcelona, python, numpy, matplotlib]
+tags: [data-munging, data-analysis, barcelona,  numpy, matplotlib]
 ---
 
 <h2>Data Munging and Analyzing Barcelona OSM Data</h2>
@@ -36,7 +36,7 @@ def get_element(osm_file, tags=('node', 'way', 'relation')):
     """Yield element if it is the right type of tag
 
     Reference:
-    http://stackoverflow.com/questions/3095434/inserting-newlines-in-xml-file-generated-via-xml-etree-elementtree-in-python
+    http://stackoverflow.com/questions/3095434/inserting-newlines-in-xml-file-generated-via-xml-etree-elementtree-in-
     """
     context = ET.iterparse(osm_file, events=('start', 'end'))
     _, root = next(context)
@@ -213,7 +213,7 @@ def calculate_initial_compass_bearing(pointA, pointB):
 ```
 
 
-```python
+```pyhton
 degree_data = []
 with open("C:/Users/Cole/Desktop/Udacity/Data Analyst Nano Degree/Project 3/barcelona_spain.osm.json","r") as data_file:
     data = json.load(data_file)
@@ -235,7 +235,7 @@ print degree_data[3:8]
 
 <h2>Data Visualization</h2>  
 With the street angle data, we can now generate a circular historgram plot across the street angles and visualize the most dominate directions of Barcelona streets.
-Code adapted from [SO Circular Histogram for Python](http://stackoverflow.com/questions/22562364/circular-histogram-for-python)
+Code adapted from [SO Circular Histogram for Python](http://stackoverflow.com/questions/22562364/circular-histogram-for-)
 
 
 ```python

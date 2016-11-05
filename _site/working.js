@@ -9,8 +9,8 @@ parseMonthly = d3.time.format("%Y-%m").parse
 parseYearly = d3.time.format("%Y").parse
 
 //margins for data viz spacings
-var margin = {top: 20, right: 20, bottom: 20, left: 120, tag: 20,legend:200},
-    width = 1503 - margin.left - margin.right;
+var margin = {top: 20, right: 20, bottom: 20, left: 120, tag: 20,legend:250},
+    width = 1460 - margin.left - margin.right;
 
 var legend_color = d3.scale.category10(); //color scale for unique legend item
 
@@ -22,8 +22,7 @@ var max_tags = 20;
 
 //the resolution dict holds the functions required to update the graphic scales at each resolution class, stored in an array with:
 // 0-datetime parser, 1 - top level graphic tick intervals, 2 - bottom level (nav) tick intervals, 3 - default days to offset for original draw
-var github_resolution_dict = {"hourly":[parseHourly,[d3.time.hours,6],[d3.time.days,1],-7],
-                        "daily":[parseDaily,[d3.time.days,1],[d3.time.weeks,1],-21],
+var github_resolution_dict = {"daily":[parseDaily,[d3.time.days,1],[d3.time.weeks,1],-21],
                         "monthly":[parseMonthly,[d3.time.months,1],[d3.time.years,1],-180],
                         "yearly":[parseYearly,[d3.time.years,1],[d3.time.years,1],-1000]};
 

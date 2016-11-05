@@ -100,4 +100,12 @@
 - slug: beaker-notebook
   name: Beaker Notebook
 
+- slug: flask
+  name: flask
+
+- slug: agent-planning
+  name: Agent Planning
+
+
+
 
