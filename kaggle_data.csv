@@ -1,0 +1,4 @@
+date,Contest,Type,Contestants,PubLBRank,Public Leaderboard,PrivLBRank,Private Leaderboard,CompLink,BlogLink,Kaggle Rank,Tags
+1-Jun-16,State Farm Distracted Driver Detection,Image Classification,1440,1043,75,1043,0.72,https://www.kaggle.com/c/state-farm-distracted-driver-detection,,100,
+3-Jun-16,State Farm Distracted Driver Detection,Image Classification,1440,1043,75,1043,0.72,https://www.kaggle.com/c/state-farm-distracted-driver-detection,/blog/files/kaggle-distracted-driver.pdf,100,
+11-Nov-16,Bosch Production Line Performance,Image Classification,1373,1018,75,1043,0.73,https://www.kaggle.com/c/bosch-production-line-performance,,100,
